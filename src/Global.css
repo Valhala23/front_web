@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
 }
@@ -13,7 +19,7 @@
   border-radius: 2px;
 }
 
-.App-header {
+.header {
   background-color: #282c34;
   display: flex;
   flex-direction: column;
@@ -21,6 +27,17 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+form input {
+  background-color: #94949b;
+  border: 1px solid whitesmoke;
+  border-radius: 8px;
+  color: whitesmoke;
+}
+
+.button:hover {
+  filter: brightness(80%);
 }
 
 table, th, td {
