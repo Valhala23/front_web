@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 import logoCad from './assets/iconepc.png';
-import Navegacao from './componentes/Nav';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import Rotas from './componentes/rotas';
 function App() {
 
   const baseUrl ="https://localhost:44390/api/Produtos";
@@ -62,12 +58,6 @@ function App() {
             ))}
           </tbody>
         </table>
-
-        <Router>
-             {/* <Route path="/Produto" component={Produto} />
-            <Navegacao  />  */}
-        </Router>
-
       </div>
     </div>
   );

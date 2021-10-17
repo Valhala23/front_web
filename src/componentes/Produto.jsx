@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 import logoCad from './assets/iconepc.png';
 
 function Produto() {
