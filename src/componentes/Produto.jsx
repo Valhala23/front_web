@@ -1,10 +1,11 @@
-import React from 'react';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import '../Global.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
-import logoCad from './assets/iconepc.png';
+import logoCad from '../assets/iconepc.png';
 
-function Produto() {
+export default function Produto() {
 
   const baseUrl ="https://localhost:44390/api/Produtos";
 
@@ -28,44 +29,38 @@ function Produto() {
     <div className="App">
       <header className="App-header">
           <h3> Learn React </h3>          
+            <img src={logoCad} alt='Cadastro' />
+          <button className="btn btn-success"> Gravar produto</button>
       </header>
-      <div class="container">
-        <img src={logoCad} alt='Cadastro' />
-        <button className="btn btn-success"> Gravar produto</button>
+      <div className="container">
 
-
-    <table>
-      <thead>
-        <tr>
-          <th>NOME</th> <th>Quantidade</th> <th>VALOR</th> <th>OPÇÕES</th>
-        </tr>
-      </thead>      
-      <tbody>
-        {data.map(produto=> (
-            <tr key={produto.id}>
-          <td> {produto.nome }</td>
-          <td> {produto.quantidade }</td>
-          <td> {produto.valor}</td>    
-          <td> {produto.opcao}</td>
-        <td>
-          <button class="waves-effect btn-small blue darken-1">
-            <i class="material-icons">create</i>
-          </button>
-          <button class="waves-effect btn-small red darken-1">
-            <i class="material-icons">delete_sweep</i>
-          </button>
-        </td>
-      </tr>
-      ))}
-      </tbody>
-    </table>
-
-
-
-
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th>NOME</th> <th>Quantidade</th> <th>VALOR</th> <th>OPÇÕES</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map(produto=> (
+                  <tr key={produto.id}>
+                <td> {produto.nome }</td>
+                <td> {produto.quantidade }</td>
+                <td> {produto.valor}</td>    
+                <td> {produto.opcao}</td>
+              <td>
+                <button class="btn btn-success">
+                  Editar
+                </button>
+                <button class="btn btn-danger">
+                  Deletar
+                </button>
+              </td>
+            </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
 }
 
-export default Produto;
