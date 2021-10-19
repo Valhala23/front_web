@@ -30,10 +30,11 @@
 }
 
 form input {
-  background-color: #94949b;
+  background-color: #f3f3f3;
   border: 1px solid whitesmoke;
   border-radius: 8px;
-  color: whitesmoke;
+  color: rgb(32, 32, 32);
+  margin-top: 5%;
 }
 
 .button:hover {

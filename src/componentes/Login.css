@@ -1,34 +1,41 @@
-.login{
+.login{    
     background-color: #282c34;        
     font-size: calc(10px + 1vmin);
     color: white;
-    margin-top: 1%;
+    margin-top: 10%;
     margin-bottom: 1%;
     margin-left: 1%;
     margin-right: 1%;
-    padding: 2%;
+}
 
-    display: flex;
+.camposlogin {
+    display: grid;
     align-items: center;
     justify-content: center;
-    border: 0;
-    border-radius: 5px;
+    margin-top: 5%;    
 }
+
+
+button {      
+    margin-top: 0;
+    margin-bottom: 10%;
+}
+
+.btnconfirma {
+    margin-top: 1%;
+    text-align: center;
+}
+
 
 img {    
     width: 8ch;
     height: 8ch;
-    margin-bottom: 5%;
+    margin-top: 1%;
 }
 
 .imagemlogin {
-    text-align: left;    
-    margin: auto;
+    text-align: center;    
+    margin: 0;
 }
 
-
-  button {      
-      margin-top: 5%;
-      margin-bottom: 10%;
-  }
 
