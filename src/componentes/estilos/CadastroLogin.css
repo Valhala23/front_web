@@ -1,0 +1,10 @@
+.menucad {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(143, 144, 145);
+    border: 3px solida white;
+    flex-direction: column;
+    justify-content: baseline;
+    margin-top: 2%;
+    color: whitesmoke;
+}

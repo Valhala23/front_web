@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import './Esp32.scss';
+import './estilos/Esp32.scss';
 
 function Esp32(){
     var logado  = false;

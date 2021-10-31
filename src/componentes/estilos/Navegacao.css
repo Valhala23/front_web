@@ -1,0 +1,20 @@
+nav{
+    display: relative;    
+    justify-content: left;    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 22;    
+    background-color: #cdcbcb;
+
+}
+
+li {
+    border: 3px solida white;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: black;
+    margin-left: 25%;
+}
+
+nav.navbar li a {
+    color: black;
+  }
