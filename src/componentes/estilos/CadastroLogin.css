@@ -1,5 +1,10 @@
 .cadstrolog {
-    background-color: lightgray;
+    background-color: lightgray;    
+}
+
+form {
+    margin-top: 5%;
+    margin-left: 8%;
 }
 .menucad {
     height: 100%;
@@ -10,4 +15,9 @@
     margin-left: 5%;
     margin-bottom: 1%;
     color: whitesmoke;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 2%;
 }
