@@ -1,10 +1,13 @@
+.cadstrolog {
+    background-color: lightgray;
+}
 .menucad {
     height: 100%;
-    width: 100%;
+    width: 90%;
     background-color: rgb(143, 144, 145);
     border: 3px solida white;
-    flex-direction: column;
-    justify-content: baseline;
     margin-top: 2%;
+    margin-left: 5%;
+    margin-bottom: 1%;
     color: whitesmoke;
 }
