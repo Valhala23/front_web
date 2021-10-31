@@ -14,29 +14,33 @@ function CadLogin(){
             </div>
             <form action="">
                 <div className="row">
-                    <div className="col-4">                        
+                    <div className="col-2">                        
                         <p>nome</p>
                     </div>
-                    <div className="col">
-                        <p>acesso</p>
+                    <div className="col-8">
+                        <p>Nível de acesso</p>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-4">
                         <input type="text" />
                     </div>
-                    <div className="col">
+                    <div className="col-4">
                         <input type='radio' name='group' value='admin' /> Administrador                         
                     </div>
-                    <div className="col">
+                    <div className="col-2">
                         <input type='radio' name='group' value='user' />  Usúario 
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-4">
+                    <div className="col-2">
                         <p>senha</p>
+                    </div>
+                <div className="row">
+                    <div className="col-4">
                         <input type="password" />
                     </div>
+                </div>
                 </div>
                 <div className="row">
 
