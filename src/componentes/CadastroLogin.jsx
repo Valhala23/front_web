@@ -22,11 +22,25 @@ function CadLogin(){
                     <div className="col-6">
                         <input type="text" id="log" name="log" />
                     </div>
+                    <div className="col">
+                        <p>acesso</p>
+                    </div>
                 </div>
                 <div className="row">
+                    <div className="col-4">
+                        <input type="text" />
+                    </div>
+                    <div className="col">
+                        <input type='radio' name='group' value='admin' /> Administrador                         
+                    </div>
                     <div className="col">
                         <p>Senha</p>
                     </div>
+                </div>
+                <div className="row">
+
+                </div>
+                <div className="row">
                     <div className="col">
                         <p>Acesso</p>
                     </div>
