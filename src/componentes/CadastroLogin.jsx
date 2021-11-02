@@ -15,15 +15,36 @@ function CadLogin(){
             <form action="">
                 <div className="row">
                     <div className="col">
-                        <p>nome</p>
+                        <p>Nome</p>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-6">
+                        <input type="text" id="log" name="log" />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col">
-                        <p>senha</p>
+                        <p>Senha</p>
                     </div>
                     <div className="col">
-                        <p>acesso</p>
+                        <p>Acesso</p>
+                    </div>
+                    <div className="row">
+                        <div className="col-6">
+                            <input type="password" name="senha" id="senha" />
+                        </div>
+                        <div className="col-1">
+                            <input type="radio" id="louie" name="drone" value="louie"/>
+                        </div>
+                        <div className="col-1">
+                            <input type="radio" id="louie" name="drone" value="louie"/>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                            <button style={{float: 'right'}} type="button" class="btn btn-secondary">Cadastrar</button>
+                        </div>
                     </div>
                 </div>
             </form>
