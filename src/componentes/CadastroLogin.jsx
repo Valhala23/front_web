@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import	{ useHistory } from 'react-router-dom';
 import './estilos/CadastroLogin.css'
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 function CadLogin(){
 
     const baseUrl ="https://localhost:44390/api/Usuario";
+    const history = useHistory();
 
     const [data, setData]=useState([]);
 
@@ -33,6 +35,7 @@ function CadLogin(){
         await axios.post(baseUrl, usuariolog)
         .then(response => {
           setData(response.data);
+          history.push('/');
         }).catch(error=> {
           console.log(error);
         })
