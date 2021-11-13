@@ -1,4 +1,6 @@
 .cadstrolog {
+    display: flex;
+    flex-direction: column;
     background-color: lightgray;
     margin-left: 10%;
     margin-right: 10%;
