@@ -26,7 +26,6 @@ function CadLogin(){
             ...usuariolog,
             [name]: value
     });
-        console.log(usuariolog);
     }   
     
     const usuarioPost = async()=>{
@@ -41,50 +40,47 @@ function CadLogin(){
     
     return(        
         <div className="cadstrolog">            
-            <div className="row">  
-                <div className="col-4">
-                    <div className="menucad">
-                        <h1>Cadastro</h1>
-                        <h2>Login</h2>
-                    </div>  
-                </div>              
+            <div className="menucad">
+                <h1>Cadastro</h1>
+                <h2>Login</h2>
             </div>
             <div className="formulario">
-                <div className="row">
-                    <div className="col">
-                        <label>Nome</label>
-                    </div>
-                    <div className="col-4">
-                    </div>
-                    <div className="col">
-                    </div>
-                </div>            
-                <div className="row">
-                    <div className="col-4">
-                        <input type="text" name="nome" onChange={handleChange} />
-                    </div>
+                <div className="card">   
+                    <div className="card-body">
+                        <div className="row">
+                            <div className="col">
+                                <label>Acesso</label>
+                            </div>
+                            </div>
+                            <div className="row">
+                                <div className="col">
+                                    <input type="radio" name="permissao" value="0" onChange={handleChange}/>Adm
+                                    <input type="radio" name="permissao" value="1" onChange={handleChange}/>User
+                                </div>
+                        </div>
+                    </div>                                          
                 </div>
-                <div className="row">
-                    <div className="col-4">
-                        <label>Apelido</label>
-                    </div>
-                    <div className="col-4">
-                        <label>Senha</label>
-                    </div>
-                    <div className="col">
-                        <label>Acesso</label>
+                <div className="camposcad">
+                    <div className="row">
+                        <div className="col">
+                            <label>Nome</label>
+                            <input type="text" name="nome" onChange={handleChange} />
+                        </div>
                     </div>
                     <div className="row">
-                    <div className="col-4">
+                        <div className="col">
+                            <label>Apelido</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
                             <input type="text" name="ApelidoLogin" onChange={handleChange} />
                         </div>
-                        <div className="col-4">
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                        <label>Senha</label>
                             <input type="password" name="senha" onChange={handleChange} />
-                        </div>
-                        <div className="col-1">
-                            <input type="radio" name="permissao" value="0" onChange={handleChange}/>Adm
-
-                            <input type="radio" name="permissao" value="1" onChange={handleChange}/>User
                         </div>
                     </div>
                     <div className="row">
@@ -92,8 +88,8 @@ function CadLogin(){
                             <button style={{float: 'right'}} type="button" className="btn btn-secondary" onClick={()=> usuarioPost()}>Cadastrar</button>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div>                
+            </div>            
         </div>
     );    
 }
