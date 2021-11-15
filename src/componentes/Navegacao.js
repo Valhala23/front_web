@@ -2,6 +2,7 @@ import React from 'react'
 import Produto from './Produto';
 import Login from './Login';
 import Esp32 from './Esp32';
+import Perfil from './Perfil';
 import CadastroLogin from './CadastroLogin'
 import './estilos/Navegacao.css'
 import { Link } from 'react-router-dom'
@@ -25,6 +26,9 @@ const Navegacao = () => {
                             <li>
                                 <Link to="/Esp" className="nav-link">Esp32</Link>
                             </li>
+                            <li>
+                                <Link to="/Perfil" className="nav-link">Perfil</Link>
+                            </li>
                         </div>
                     </ul>
                 </div>
@@ -35,6 +39,7 @@ const Navegacao = () => {
                 <Route path="/Produto"> <Produto/>         </Route>
                 <Route path="/Login"> <Login/>             </Route>
                 <Route path="/Esp"> <Esp32/>               </Route>
+                <Route path="/Perfil"> <Perfil/>               </Route>
                 <Route path="/CadLogin"> <CadastroLogin/>  </Route>
             </Switch>
         </div>

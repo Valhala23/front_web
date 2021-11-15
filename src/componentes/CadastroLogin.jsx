@@ -35,7 +35,7 @@ function CadLogin(){
         await axios.post(baseUrl, usuariolog)
         .then(response => {
           setData(response.data);
-          history.push('/');
+          history.push('/Perfil');
         }).catch(error=> {
           console.log(error);
         })
