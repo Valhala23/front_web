@@ -12,10 +12,10 @@ const Navegacao = () => {
     return (
         <Router>
         <div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div  class="container">
-                    <ul class="navbar-nav">
-                        <div class="navbar-nav">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div  className="container">
+                    <ul className="navbar-nav">
+                        <div className="navbar-nav">
                             <li>
                                 <Link to="/" className="nav-link">Home</Link>
                             </li>

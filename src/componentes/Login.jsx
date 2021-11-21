@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import	{ useHistory } from 'react-router-dom';
 import './estilos/Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logarimg from '../assets/noun_portal.png';
@@ -8,8 +9,9 @@ import axios from 'axios';
 export default function Login(){
 
     const baseUrl ="https://localhost:44390/api/Usuario/fazerlogin";    
+    const history = useHistory();
 
-    const [data, setData]=useState([]);
+    //const data, setData];
 
     const [usuariolog, setUsuariolog]=useState(
     {
@@ -17,6 +19,19 @@ export default function Login(){
         ApelidoLogin: '',
         senha: ''
     });
+
+    function validar(user)
+    {
+        if(user[0].id > 0)
+        {
+            history.push('/Perfil');
+        }else 
+        {
+            console.log('Nada encontrado')
+            console.log('Resultado: '+ user)
+        }
+
+    }
 
     const handleChange = e=> 
     {
@@ -33,7 +48,7 @@ export default function Login(){
         delete usuariolog.id;
         await axios.post(baseUrl, usuariolog)
         .then(response => {
-          setData(response.data);
+           validar(response.data);
         }).catch(error=> {
           console.log(error);
         })
@@ -44,15 +59,15 @@ export default function Login(){
                 <img src={logarimg} alt="Login" />
             </div>
 
-            <div class="camposlogin form-group"> 
+            <div className="camposlogin form-group"> 
                 <input type="text" placeholder="Login" name="ApelidoLogin" onChange={handleChange}></input>                
                 <input type="password" placeholder="Senha" name="senha" onChange={handleChange} />
             </div>
             <div className="btnconfirma">
-                <button class="button" class="btn btn-secondary btn-sm" onClick={()=> usuarioPost()}>Logar</button>
+                <button className="button" className="btn btn-secondary btn-sm" onClick={()=> usuarioPost()}>Logar</button>
             </div>
             <div className="btncadastrp">
-                <Link to="/CadLogin" class="btn btn-info" >Cadastrar login</Link>
+                <Link to="/CadLogin" className="btn btn-info" >Cadastrar login</Link>
             </div>
         </div>
         );    

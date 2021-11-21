@@ -48,10 +48,10 @@ export default function Produto() {
                 <td> {produto.valor}</td>    
                 <td> {produto.opcao}</td>
               <td>
-                <button class="btn btn-success">
+                <button className="btn btn-success">
                   Editar
                 </button>
-                <button class="btn btn-danger">
+                <button className="btn btn-danger">
                   Deletar
                 </button>
               </td>
