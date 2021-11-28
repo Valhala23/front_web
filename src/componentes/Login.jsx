@@ -1,34 +1,60 @@
-import React, { useEffect, useState } from 'react';
-import	{ useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import './estilos/Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logarimg from '../assets/noun_portal.png';
 import { Link } from 'react-router-dom'
-import axios from 'axios';
+import api from '../servicos/api'
+//import axios from 'axios';
 
-export default function Login(){
+const Login = props => {
 
-    const baseUrl ="https://localhost:44390/api/Usuario/fazerlogin";    
+    const Url ="api/Usuario/fazerlogin";    
     const history = useHistory();
 
-    //const data, setData];
-
-    const [usuariolog, setUsuariolog]=useState(
+    var [usuariolog, setUsuariolog]=useState(
     {
-        id: '',
-        ApelidoLogin: '',
-        senha: ''
+        id: 0,
+        nome: "",
+        descricao: "",
+        bio: "",
+        sexo: null,
+        historico: "",
+        contato: "",
+        observacoes: "",
+        foto: "",
+        apelidoLogin: "",
+        senha: "",
+        token: "",
+        permissao: 0
     });
 
-    function validar(user)
+
+    function validar()        
     {
-        if(user[0].id > 0)
+        // var user = JSON.parse(data)
+        //const user = data.user;
+        if(usuariolog.id > 0)
         {
-            history.push('/Perfil');
+            //setUsuariolog(usuariolog = user)
+            // const obj = JSON.parse(user[0]);
+            
+            // console.log('Resultado 1f: '+ JSON.stringify(user));
+            console.log('Resultado normal: '+ usuariolog.nome)
+            // console.log('Resultado 2f: '+ JSON.stringify(obj.id))
+            // console.log('Resultado 3f: '+ user[0])
+            // console.log('Resultado 4f: '+ user)
+
+            // history.push('/Perfil')
+
+            props.history.push({ pathname: '/Perfil',  usuariolog })
+
         }else 
         {
-            console.log('Nada encontrado')
-            console.log('Resultado: '+ user)
+             console.log('Nada encontrado')
+             console.log('Resultado: '+ JSON.stringify(usuariolog))
+             console.log('Resultado 2f: '+ (usuariolog))
+             
         }
 
     }
@@ -44,14 +70,34 @@ export default function Login(){
     });
     }   
     
-    const usuarioPost = async()=>{
+    async function usuarioPost(event) {
+        //event.preventDefault();
         delete usuariolog.id;
-        await axios.post(baseUrl, usuariolog)
-        .then(response => {
-           validar(response.data);
-        }).catch(error=> {
-          console.log(error);
-        })
+        try 
+        {
+            const resposta = await api.post('https://localhost:44390/api/Usuario/fazerlogin', usuariolog);
+            localStorage.setItem('apelido', usuariolog.apelidoLogin)
+            localStorage.setItem('token', resposta.data.token)
+            
+            // Apos login
+            if(resposta.data.user.id > 0){
+                setUsuariolog(usuariolog = resposta.data.user)
+                console.log(resposta.data.token)
+            }
+
+            console.log('Resultado normal: '+ usuariolog.nome)
+            // history.push('/Perfil')
+        }catch(erro)
+        {
+            alert("Erro ao logar " + erro);  
+        }
+        
+        // .then(response => {
+        //     setUsuariolog(usuariolog = response.data.user)
+        //    validar();
+        // }).catch(error=> {
+        //   console.log(error);
+        // })
       } 
         return(        
         <div className="login">
@@ -74,3 +120,4 @@ export default function Login(){
 }
 
 
+export default Login;
