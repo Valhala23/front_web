@@ -83,21 +83,14 @@ const Login = props => {
             if(resposta.data.user.id > 0){
                 setUsuariolog(usuariolog = resposta.data.user)
                 console.log('Resultado normal: '+ usuariolog.nome)
-                // history.push('/Perfil')
+
                 const uNome = usuariolog.nome;
-                history.push({ pathname: '/Perfil',  usuario: uNome })
+                history.push({ pathname: '/Perfil',  usuario: usuariolog })
             }
         }catch(erro)
         {
             alert("Erro ao logar " + erro);  
         }
-        
-        // .then(response => {
-        //     setUsuariolog(usuariolog = response.data.user)
-        //    validar();
-        // }).catch(error=> {
-        //   console.log(error);
-        // })
       } 
         return(        
         <div className="login">
