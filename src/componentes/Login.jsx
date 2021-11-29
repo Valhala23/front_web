@@ -87,6 +87,8 @@ const Login = props => {
 
             console.log('Resultado normal: '+ usuariolog.nome)
             // history.push('/Perfil')
+            const uNome = usuariolog.nome;
+            history.push({ pathname: '/Perfil',  usuario: uNome })
         }catch(erro)
         {
             alert("Erro ao logar " + erro);  
