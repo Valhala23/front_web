@@ -16,13 +16,10 @@ function Perfil(props){
             </NavLink>
 
             <h1>Perfil usuário </h1>
-            <h2>Token: {console.log(location.usuario)} </h2>
-            <h2>Token: {console.log(location.usuario)} </h2>
-            {/* <h2>Token: {nome} </h2>  */}
-            {/* <h2>location state: {console.log(usuario)} </h2>  */}
-            {/* <h2>Token: {console.log(JSON.stringify(props.nome))} </h2> 
-            <h2>Token: {console.log(JSON.stringify(props.props))} </h2>  */}
-             {/* <h2>Nome:  {console.log(props)} </h2> */}
+            <h2>Nome: {location.usuario} </h2>
+            <h2>Apelido: {location.usuario} </h2>
+            {/* <h2>Nome: {location.usuario} </h2> */}
+            <h2>Token: {console.log(localStorage.getItem('token'))} </h2>
         </div>
     );    
 }
