@@ -12,7 +12,7 @@
 
 
 .informacoes {
-    margin-top: -1%;
+    margin-top: 0;
     background-color: #93909b;
     color: aliceblue;
     border-radius: 5px  10px 55px 10px;
@@ -23,17 +23,10 @@
 }
 
 .foto {
-    display: inline-flex;
     background-color: whitesmoke;
 	border: 1px solid black;
 	height: 120px;
 	width: 150px;	margin: 10px;
-	border-radius: 5px  10px 5px 10px;
-	background-image: url(http://pawelskowronek.me/images/profile.jpg);
-	box-shadow: 2px 3px 10px black;
-    margin-bottom: -50%;    
-    z-index: 2;
-    min-height: 10%;
-    min-width: 10%;
-
+	border-radius: 5px  10px 5px 10px;	
+	box-shadow: 2px 3px 10px black;    
 }
