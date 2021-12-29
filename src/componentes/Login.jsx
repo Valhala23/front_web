@@ -28,36 +28,7 @@ const Login = props => {
         token: "",
         permissao: 0
     });
-
-
-    function validar()        
-    {
-        // var user = JSON.parse(data)
-        //const user = data.user;
-        if(usuariolog.id > 0)
-        {
-            //setUsuariolog(usuariolog = user)
-            // const obj = JSON.parse(user[0]);
-            
-            // console.log('Resultado 1f: '+ JSON.stringify(user));
-            console.log('Resultado normal: '+ usuariolog.nome)
-            // console.log('Resultado 2f: '+ JSON.stringify(obj.id))
-            // console.log('Resultado 3f: '+ user[0])
-            // console.log('Resultado 4f: '+ user)
-
-            // history.push('/Perfil')
-
-            props.history.push({ pathname: '/Perfil',  usuariolog })
-
-        }else 
-        {
-             console.log('Nada encontrado')
-             console.log('Resultado: '+ JSON.stringify(usuariolog))
-             console.log('Resultado 2f: '+ (usuariolog))
-             
-        }
-
-    }
+    
 
     const handleChange = e=> 
     {
