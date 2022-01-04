@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import	{ useHistory } from 'react-router-dom';
 import './estilos/CadastroLogin.css'
-import axios from 'axios';
+import api from '../servicos/api'
 import 'bootstrap/dist/css/bootstrap.min.css';
 function CadLogin(){
 
-    const baseUrl ="https://localhost:44390/api/Usuario";
+    const baseUrl ="https://localhost:44390/api/Usuario/cadastrarnovo";
     const history = useHistory();
 
     const [data, setData]=useState([]);
 
     const [usuariolog, setUsuariolog]=useState(
-    {
-        id: '',
-        nome: '',
-        senha: '',
-        ApelidoLogin: '',
-        permissao: ''
-    });
-
+        {
+          id: 0,
+          nome: '',
+          apelidoLogin: '',
+          senha: '',
+          permissao: ''
+        });
+        
     const handleChange = e=> 
     {
         // Montar objeto usuario
@@ -30,9 +30,10 @@ function CadLogin(){
     });
     }   
     
-    const usuarioPost = async()=>{
+    const usuarioPost = async()=>{        
         delete usuariolog.id;
-        await axios.post(baseUrl, usuariolog)
+        console.log('chegou no metodo para cadastrar  ' + usuariolog.nome + ' .  ' + usuariolog.ApelidoLogin)
+        await api.post(baseUrl, usuariolog)
         .then(response => {
           setData(response.data);
           history.push('/Perfil');

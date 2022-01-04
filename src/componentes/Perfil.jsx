@@ -4,16 +4,38 @@ import { NavLink } from "react-router-dom";
 import axios from 'axios';
 import { useLocation } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import api from '../servicos/api'
 import fotoPerfilPadrao from '../assets/fotoPadrao.png'
 function Perfil(props){    
-    const location = useLocation();
-    const [fotoPerfil, setFotoPerfil] = useState(fotoPerfilPadrao);
-    
-    const [picture, setPicture] = useState(null);
+    const location = useLocation();    
+    const dados = new FormData()
+    const [picture, setPicture] = useState(fotoPerfilPadrao);
+    var [imgDados, setImgDados] = useState(fotoPerfilPadrao);
     
     const onChangePicture = e => {
         setPicture(URL.createObjectURL(e.target.files[0]) );
+        setImgDados(imgDados = e.target.files[0]);
     };
+
+    const config = {
+        'Content-Type': 'multipart/form-data',
+    }
+
+    async function enviarDados(){
+        try 
+        {
+            //const resposta = await api.post('https://localhost:44390/api/Usuario/postarfotoperfil', dados);            
+            await dados.append('arquivo', imgDados)
+            // await api.post('https://localhost:44390/api/Usuario/upload', dados, config).then(res => {
+            await api.post('https://localhost:44390/api/imagem/upload', dados)
+            // .then(res => {
+            // console.log(res.data + 'this is data after api call');         
+            // })
+        }catch(erro)
+        {
+            alert("Erro ao postar foto " + erro);  
+        }
+    }    
 
     return(
         <div>
@@ -72,7 +94,10 @@ function Perfil(props){
                             </div>
                         </div>
                         <div className="col">
-                        <input id="profilePic" type="file" onChange={onChangePicture}/>
+                            <input id="profilePic" type="file" onChange={onChangePicture}/>
+                        </div>
+                        <div className="col">
+                            <button onClick={enviarDados}>Postar foto</button>
                         </div>
                     </div>
                 </div>
