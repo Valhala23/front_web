@@ -16,9 +16,10 @@ function CadLogin(){
           nome: '',
           apelidoLogin: '',
           senha: '',
-          permissao: ''
-        });
-        
+          permissao: 0
+        }
+    );  
+    
     const handleChange = e=> 
     {
         // Montar objeto usuario
@@ -27,19 +28,23 @@ function CadLogin(){
         {
             ...usuariolog,
             [name]: value
-    });
+        });        
     }   
     
     const usuarioPost = async()=>{        
         delete usuariolog.id;
-        console.log('chegou no metodo para cadastrar  ' + usuariolog.nome + ' .  ' + usuariolog.ApelidoLogin)
-        await api.post(baseUrl, usuariolog)
-        .then(response => {
-          setData(response.data);
-          history.push('/Perfil');
-        }).catch(error=> {
-          console.log(error);
-        })
+
+        try {
+            await api.post('https://localhost:44390/api/Usuario/cadastrarnovo', usuariolog)
+            .then(async response => {
+              setData(response.data);
+              history.push('/');
+            }).catch(error=> {
+              console.log(error);
+            })            
+        } catch (error) {
+            history.push('/');
+        }
       }    
     
     return(        
@@ -60,6 +65,8 @@ function CadLogin(){
                                 <div className="col">
                                     <input type="radio" name="permissao" value="0" onChange={handleChange}/>Adm
                                     <input type="radio" name="permissao" value="1" onChange={handleChange}/>User
+
+                                    {/* <input type="number" name="permissao" value="1" onChange={handleChange}/>User */}
                                 </div>
                         </div>
                     </div>                                          
