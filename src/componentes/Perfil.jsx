@@ -101,8 +101,14 @@ function Perfil(props){
                         </div>
                     </div>
                 </div>
-                <h2>Token: {console.log(localStorage.getItem('token'))} </h2>
-
+                <div className="row">
+                    <div className="col">
+                        <h2>Token: {console.log(localStorage.getItem('token'))} </h2>
+                    </div>
+                    <div className="col">
+                        <button >Editar</button>
+                    </div>
+                </div>
                 <div className="row">
                     <section className="link">
                     <NavLink to="/" activeClassName="active">
