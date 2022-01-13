@@ -25,7 +25,7 @@ function Perfil(props){
         try 
         {
             //const resposta = await api.post('https://localhost:44390/api/Usuario/postarfotoperfil', dados);            
-            await dados.append('arquivo', imgDados)
+            await dados.append('arquivo', imgDados, location.usuario.nome)
             // await api.post('https://localhost:44390/api/Usuario/upload', dados, config).then(res => {
             await api.post('https://localhost:44390/api/imagem/upload', dados)
             // .then(res => {
