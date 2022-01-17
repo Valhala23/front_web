@@ -10,10 +10,15 @@ const EditarPerfil2 = (props) =>{
     return(
         <div>
             <div className="cabecalho">
-                <h1>Perfil usuário </h1>
+                <h1>Edição do perfil </h1>
             </div>
 
             <div className="container">  
+                <div className="row">
+                    <div className="col">
+                        <button style={{float: 'right'}} >Postar foto</button>
+                    </div>
+                </div>
                 <div className="row">
                     <div className="col-6">
                         <h2>Nome: </h2>
@@ -68,9 +73,6 @@ const EditarPerfil2 = (props) =>{
                                 <h2>permissao: {location.state.usuario.permissao} </h2>
                                 <input type="text" value={location.state.usuario.permissao} name="nome"  />
                             </div>
-                        </div>
-                        <div className="col">
-                            <button >Postar foto</button>
                         </div>
                     </div>
                 </div>
