@@ -108,8 +108,7 @@ function Perfil(props){
                     <div className="col">
                         <Link 
                         // to={{ pathname: "/EditarPerfil2", props:{location}}} className="btn btn-light" >Editar</Link>
-                        to={{ pathname: "/EditarPerfil2",  state:{nome: "Asnaeb"}}} className="btn btn-light" >Editar</Link>
-                        <Link to="/EditarPerfil2" params={{ nome: "hello" }}>Create Idea</Link>
+                        to={{ pathname: "/EditarPerfil2",  state:{usuario: location.usuario}}} className="btn btn-light" >Editar</Link>
                     </div>
                 </div>
                 <div className="row">
