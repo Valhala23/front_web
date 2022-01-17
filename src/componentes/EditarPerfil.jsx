@@ -1,8 +1,8 @@
 import React, { Component, useState, useEffect} from 'react';
 import './estilos/Perfil.css'
 import { NavLink } from "react-router-dom";
+import axios from 'axios';
 import { useLocation } from "react-router-dom";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import api from '../servicos/api'
 import fotoPerfilPadrao from '../assets/fotoPadrao.png'
@@ -46,10 +46,14 @@ function Perfil(props){
             <div className="container">  
                 <div className="row">
                     <div className="col-6">
-                        <h2>Nome: {location.usuario.nome} </h2>
+                        <h2>Nome: </h2>
+                        {/* onChange={handleChange} */}
+                        <input type="text" value={location.usuario.nome} name="nome"  />
                     </div>
                     <div className="col">
-                        <h2>Apelido: {location.usuario.apelidoLogin} </h2>
+                        <h2>Apelido: </h2>
+                        {/* onChange={handleChange} */}
+                        <input type="text" value={location.usuario.apelidoLogin} name="nome"  />
                     </div>
                     <div className="col">
                         <div className="foto">
@@ -106,10 +110,7 @@ function Perfil(props){
                         <h2>Token: {console.log(localStorage.getItem('token'))} </h2>
                     </div>
                     <div className="col">
-                        <Link 
-                        // to={{ pathname: "/EditarPerfil2", props:{location}}} className="btn btn-light" >Editar</Link>
-                        to={{ pathname: "/EditarPerfil2",  state:{nome: "Asnaeb"}}} className="btn btn-light" >Editar</Link>
-                        <Link to="/EditarPerfil2" params={{ nome: "hello" }}>Create Idea</Link>
+                        <button >Editar</button>
                     </div>
                 </div>
                 <div className="row">
