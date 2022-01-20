@@ -7,8 +7,8 @@ import api from '../servicos/api'
 
 const EditarPerfil2 = (props) =>{ 
 
-    const [data, setData]=useState([]);
-    const [usuariolog, setUsuariolog]=useState(
+    // const [data, setData]=useState([]);
+    var [usuariolog, setUsuariolog]=useState(
         {
           id: 0,
           nome: '',
@@ -27,15 +27,23 @@ const EditarPerfil2 = (props) =>{
             ...usuariolog,
             [name]: value
         });        
-    } 
+    }
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    //document.title = `You clicked ${count} times`;
+
+    usuariolog = location.state.usuario
+  }, []);
 
     const editarUsuario = async()=>{
         // com o objeto usuario recebido pegar id e enviar para o metodo update                
         // location.state.usuario.id
         try {
-            await api.post('https://localhost:44390/api/Usuario/cadastrarnovo', usuariolog)
+            await api.put('https://localhost:44390/api/Usuario/'+ usuariolog.id, usuariolog)
             .then(async response => {
-              setData(response.data);
+              //setData(response.data);
               //history.push('/');
             }).catch(error=> {
               console.log(error);

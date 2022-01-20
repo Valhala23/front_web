@@ -8,7 +8,7 @@ function CadLogin(){
     const baseUrl ="https://localhost:44390/api/Usuario/cadastrarnovo";
     const history = useHistory();
 
-    const [data, setData]=useState([]);
+    // const [data, setData]=useState([]);
 
     const [usuariolog, setUsuariolog]=useState(
         {
@@ -29,7 +29,7 @@ function CadLogin(){
             ...usuariolog,
             [name]: value
         });        
-    }   
+    }  
     
     const usuarioPost = async()=>{        
         delete usuariolog.id;
@@ -37,7 +37,7 @@ function CadLogin(){
         try {
             await api.post('https://localhost:44390/api/Usuario/cadastrarnovo', usuariolog)
             .then(async response => {
-              setData(response.data);
+              // setData(response.data);
               history.push('/');
             }).catch(error=> {
               console.log(error);

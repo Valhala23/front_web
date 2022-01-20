@@ -53,7 +53,7 @@ const Login = props => {
             // Apos login Confere se encontrou um usuario 
             if(resposta.data.user.id > 0){
                 setUsuariolog(usuariolog = resposta.data.user)
-                console.log('Resultado normal: '+ usuariolog.nome)
+                console.log('Resultado normal: '+ usuariolog.nome + " senha: " + usuariolog.senha)
 
                 const uNome = usuariolog.nome;
                 history.push({ pathname: '/Perfil',  usuario: usuariolog })
