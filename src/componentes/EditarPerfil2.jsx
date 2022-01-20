@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect} from 'react';
 import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import './estilos/Perfil.css'
 import { NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,7 +8,7 @@ import api from '../servicos/api'
 
 const EditarPerfil2 = (props) =>{ 
 
-    // const [data, setData]=useState([]);
+    const history = useHistory();
     var [usuariolog, setUsuariolog]=useState(
         {
           id: 0,
@@ -43,13 +44,13 @@ const EditarPerfil2 = (props) =>{
         try {
             await api.put('https://localhost:44390/api/Usuario/'+ usuariolog.id, usuariolog)
             .then(async response => {
-              //setData(response.data);
-              //history.push('/');
+              history.push({ pathname: '/Perfil',  usuario: usuariolog })
             }).catch(error=> {
               console.log(error);
             })            
         } catch (error) {
             //history.push('/');
+            alert('Não foi possível atualizar: ' + error);
         }
       } 
 
