@@ -42,7 +42,7 @@ const Navegacao = () => {
                 <Route path="/Esp"> <Esp32/>               </Route>
                 <Route path="/Perfil"> <Perfil/>               </Route>
                 <Route path="/CadLogin"> <CadastroLogin/>  </Route>
-                <Route path="/EditarPerfil2" component={EditarPerfil} /> 
+                <Route path="/EditarPerfil" component={EditarPerfil} /> 
             </Switch>
         </div>
         </Router>
