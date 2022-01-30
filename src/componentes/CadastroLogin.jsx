@@ -5,7 +5,7 @@ import api from '../servicos/api'
 import 'bootstrap/dist/css/bootstrap.min.css';
 function CadLogin(){
 
-    const baseUrl ="https://localhost:44390/api/Usuario/cadastrarnovo";
+    const baseUrl ="https://10.0.0.172:44390/api/Usuario/cadastrarnovo";
     const history = useHistory();
 
     // const [data, setData]=useState([]);
@@ -35,7 +35,7 @@ function CadLogin(){
         delete usuariolog.id;
 
         try {
-            await api.post('https://localhost:44390/api/Usuario/cadastrarnovo', usuariolog)
+            await api.post('https://10.0.0.172:44390/api/Usuario/cadastrarnovo', usuariolog)
             .then(async response => {
               // setData(response.data);
               history.push('/');

@@ -1,8 +1,8 @@
 import React, { Component, useState, useEffect} from 'react';
+import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import './estilos/Perfil.css'
 import { NavLink } from "react-router-dom";
-import axios from 'axios';
-import { uselocation.state } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import api from '../servicos/api'
 import fotoPerfilPadrao from '../assets/fotoPadrao.png'
@@ -35,14 +35,14 @@ function Perfil(props){
     // Update the document title using the browser API
     //document.title = `You clicked ${count} times`;
 
-    usuariolog = location.state.state.usuario
+    usuariolog = location.state.usuario
   }, []);
 
     const editarUsuario = async()=>{
         // com o objeto usuario recebido pegar id e enviar para o metodo update                
         // location.state.state.usuario.id
         try {
-            await api.put('https://localhost:44390/api/Usuario/'+ usuariolog.id, usuariolog)
+            await api.put('https://10.0.0.172:44390/api/Usuario/'+ usuariolog.id, usuariolog)
             .then(async response => {
               history.push({ pathname: '/Perfil',  usuario: usuariolog })
             }).catch(error=> {
@@ -55,7 +55,7 @@ function Perfil(props){
       } 
 
     
-    const location.state = uselocation.state();     
+    const location = useLocation();      
 
     return(
         <div>
@@ -78,7 +78,7 @@ function Perfil(props){
                     <div className="col">
                         <div className="foto">
                             <h2>foto: {location.state.usuario.foto} </h2>
-                            <img className="playerProfilePic_home_tile"  src={picture && picture}></img>
+                            {/* <img className="playerProfilePic_home_tile"  src={picture && picture}></img> */}
                         </div>
                     </div>
                 </div>                       
@@ -118,10 +118,10 @@ function Perfil(props){
                             </div>
                         </div>
                         <div className="col">
-                            <input id="profilePic" type="file" onChange={onChangePicture}/>
+                            {/* <input id="profilePic" type="file" onChange={onChangePicture}/> */}
                         </div>
                         <div className="col">
-                            <button onClick={enviarDados}>Postar foto</button>
+                            {/* <button onClick={enviarDados}>Postar foto</button> */}
                         </div>
                     </div>
                 </div>

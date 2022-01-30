@@ -46,7 +46,7 @@ const Login = props => {
         delete usuariolog.id;
         try 
         {
-            const resposta = await api.post('https://localhost:44390/api/Usuario/fazerlogin', usuariolog);
+            const resposta = await api.post('https://10.0.0.172:44390/api/Usuario/fazerlogin', usuariolog);
             localStorage.setItem('apelido', usuariolog.apelidoLogin)
             localStorage.setItem('token', resposta.data.token)
             

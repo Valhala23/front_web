@@ -4,7 +4,7 @@ import Login from './Login';
 import Esp32 from './Esp32';
 import Perfil from './Perfil';
 import CadastroLogin from './CadastroLogin'
-import EditarPerfil from './EditarPerfil2'
+import EditarPerfil from './EditarPerfil'
 import './estilos/Navegacao.css'
 import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
