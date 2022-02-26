@@ -63,8 +63,8 @@ const Login = props => {
         delete usuariolog.id;
         try 
         {
-            fetch('http://10.0.0.144:3055/fazerlogin', requestOptions)
-            .then(response => response.json()
+            fetch('http://10.0.0.172:3055/fazerlogin', requestOptions)
+            .then(  // response => response.json().then()
             // .then(data => setPostId(data.id)
             
             // const resposta = await axios.post('localhost:3055/fazerlogin', usuariolog,
@@ -73,6 +73,7 @@ const Login = props => {
             //     'Access-Control-Allow-Origin':'*',
             //     'Content-Type': 'application/json;charset=UTF-8',
             // }
+                history.push({ pathname: '/Perfil',  usuario: usuariolog })
             );
             localStorage.setItem('apelido', usuariolog.apelidoLogin)
             // localStorage.setItem('token', response.data.token)
@@ -83,7 +84,7 @@ const Login = props => {
             //     console.log('Resultado normal: '+ usuariolog.nomelogin + " senha: " + usuariolog.senhalogin)
 
             //     const uNome = usuariolog.nomelogin;
-            //  classcls
+
             //     history.push({ pathname: '/Perfil',  usuario: usuariolog })
             // }
         }catch(erro)
@@ -102,7 +103,7 @@ const Login = props => {
             <input type="password" placeholder="Senha" name="senhalogin" onChange={handleChange} />
         </div>
         <div className="btnconfirma">
-            <button class="button" class="btn btn-secondary btn-sm" type="submit">Logar</button>
+            <button class="button" class="btn btn-secondary btn-sm" type="submit" onClick={usuarioPost}>Logar</button>
         </div>
         <div className="btncadastrp">
             <Link to="/CadLogin" class="btn btn-info" >Cadastrar login</Link>
