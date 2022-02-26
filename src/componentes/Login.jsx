@@ -10,7 +10,7 @@ import api from '../servicos/api'
 const Login = props => {
 
     const Url ="api/Usuario/fazerlogin";    
-    const history = useHistory();
+    const history = useHistory();    
 
     var [usuariolog, setUsuariolog]=useState(
     {
@@ -46,7 +46,7 @@ const Login = props => {
         delete usuariolog.id;
         try 
         {
-            const resposta = await api.post('https://10.0.0.172:44390/api/Usuario/fazerlogin', usuariolog);
+            const resposta = await api.post('http://10.0.0.172:5001/api/Usuario/fazerlogin', usuariolog);
             localStorage.setItem('apelido', usuariolog.apelidoLogin)
             localStorage.setItem('token', resposta.data.token)
             

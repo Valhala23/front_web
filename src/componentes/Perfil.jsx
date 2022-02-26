@@ -23,11 +23,9 @@ function Perfil(props){
 
     async function enviarDados(){
         try 
-        {
-            //const resposta = await api.post('https://10.0.0.172:44390/api/Usuario/postarfotoperfil', dados);            
+        {            
             await dados.append('arquivo', imgDados, location.usuario.nome)
-            // await api.post('https://10.0.0.172:44390/api/Usuario/upload', dados, config).then(res => {
-            await api.post('https://10.0.0.172:44390/api/imagem/upload', dados)
+            await api.post('http://10.0.0.172:5001/api/imagem/upload', dados)
             // .then(res => {
             // console.log(res.data + 'this is data after api call');         
             // })
