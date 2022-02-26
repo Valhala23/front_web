@@ -14,9 +14,9 @@ function CadLogin(){
         {
           id: 0,
           nome: '',
-          apelidoLogin: '',
-          senha: '',
-          permissao: 0
+          nomelogin: '',
+          senhalogin: '',
+          permit: 0
         }
     );  
     
@@ -35,15 +35,19 @@ function CadLogin(){
         delete usuariolog.id;
 
         try {
-            await api.post('http://10.0.0.172:5001/api/Usuario/cadastrarnovo', usuariolog)
+            await api.post('http://10.0.0.172:3055/salvaloginapi', usuariolog)
             .then(async response => {
               // setData(response.data);
-              history.push('/');
+              if(response.data){
+                history.push('/');
+              }else{
+                console.log("error ao salvar");    
+              }
             }).catch(error=> {
               console.log(error);
             })            
         } catch (error) {
-            history.push('/');
+            console.log(error);
         }
       }    
     
@@ -63,8 +67,8 @@ function CadLogin(){
                             </div>
                             <div className="row">
                                 <div className="col">
-                                    <input type="radio" name="permissao" value="0" onChange={handleChange}/>Adm
-                                    <input type="radio" name="permissao" value="1" onChange={handleChange}/>User
+                                    <input type="radio" name="permit" value="0" onChange={handleChange}/>Adm
+                                    <input type="radio" name="permit" value="1" onChange={handleChange}/>User
 
                                     {/* <input type="number" name="permissao" value="1" onChange={handleChange}/>User */}
                                 </div>
@@ -85,13 +89,13 @@ function CadLogin(){
                     </div>
                     <div className="row">
                         <div className="col">
-                            <input type="text" name="ApelidoLogin" onChange={handleChange} />
+                            <input type="text" name="nomelogin" onChange={handleChange} />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
                         <label>Senha</label>
-                            <input type="password" name="senha" onChange={handleChange} />
+                            <input type="password" name="senhalogin" onChange={handleChange} />
                         </div>
                     </div>
                     <div className="row">
