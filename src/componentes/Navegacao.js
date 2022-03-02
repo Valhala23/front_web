@@ -1,7 +1,7 @@
 import React from 'react'
 import Produto from './Produto';
 import Login from './Login';
-import Esp32 from './Esp32';
+import Artigo from './Artigo';
 import Perfil from './Perfil';
 import CadastroLogin from './CadastroLogin'
 import EditarPerfil from './EditarPerfil'
@@ -25,7 +25,8 @@ const Navegacao = () => {
                             </li>
 
                             <li>
-                                <Link to="/Esp" className="nav-link">Esp32</Link>
+                                {/* <Link to="/Esp" className="nav-link">Esp32</Link> */}
+                                <Link to="/Artigo" className="nav-link">Publicações</Link>
                             </li>
                             <li>
                                 <Link to="/Perfil" className="nav-link">Perfil</Link>
@@ -39,7 +40,7 @@ const Navegacao = () => {
                 <Route exact path="/"> <Login/>            </Route>
                 <Route path="/Produto"> <Produto/>         </Route>
                 <Route path="/Login"> <Login/>             </Route>
-                <Route path="/Esp"> <Esp32/>               </Route>
+                <Route path="/Artigo"> <Artigo/>               </Route>
                 <Route path="/Perfil"> <Perfil/>               </Route>
                 <Route path="/CadLogin"> <CadastroLogin/>  </Route>
                 <Route path="/EditarPerfil" component={EditarPerfil} /> 

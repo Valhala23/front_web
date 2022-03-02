@@ -44,15 +44,16 @@ function Perfil(props){
             <div className="container">  
                 <div className="row">
                     <div className="col-6">
-                        <h2>Nome: {location.usuario.nome} </h2>
+                        {/* <h2>Nome: {location.usuario.nome} </h2> */}
+                        <h2>Nome:  </h2>
                     </div>
                     <div className="col">
-                        <h2>Apelido: {location.usuario.apelidoLogin} </h2>
+                        <h2>Apelido: {location.usuario.nomelogin} </h2>
                     </div>
                     <div className="col">
                         <div className="foto">
-                            <h2>foto: {location.usuario.foto} </h2>
-                            <img className="playerProfilePic_home_tile"  src={picture && picture}></img>
+                            {/* <h2>foto: {location.usuario.foto} </h2> */}
+                            {/* <img className="playerProfilePic_home_tile"  src={picture && picture}></img> */}
                         </div>
                     </div>
                 </div>                       
@@ -60,35 +61,35 @@ function Perfil(props){
                 <div className="informacoes">
                     <div className="row">
                         <div className="col">
-                            <h2>Bio: {location.usuario.bio} </h2>
+                            {/* <h2>Bio: {location.usuario.bio} </h2> */}
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
-                            <h2>Descrição: {location.usuario.descricao} </h2>
+                            {/* <h2>Descrição: {location.usuario.descricao} </h2> */}
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
-                            <h2>sexo: {location.usuario.sexo} </h2>
+                            {/* <h2>sexo: {location.usuario.sexo} </h2> */}
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
-                            <h2>historico: {location.usuario.historico} </h2>
+                            {/* <h2>historico: {location.usuario.historico} </h2> */}
                         </div>
                     </div>                
                     <div className="row">
                         <div className="col">
                             <div className="contato">
-                                <h2>contato: {location.usuario.contato} </h2>
+                                {/* <h2>contato: {location.usuario.contato} </h2> */}
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
                             <div className="nivel">
-                                <h2>permissao: {location.usuario.permissao} </h2>
+                                {/* <h2>permissao: {location.usuario.permissao} </h2> */}
                             </div>
                         </div>
                         <div className="col">
@@ -101,13 +102,13 @@ function Perfil(props){
                 </div>
                 <div className="row">
                     <div className="col">
-                        <h2>Token: {console.log(localStorage.getItem('token'))} </h2>
+                        <h2>Token: </h2>
+                        {/* <h2>Token: {console.log(localStorage.getItem('token'))} </h2> */}
                     </div>
-                    <div className="col">
-                        <Link 
-                        // to={{ pathname: "/EditarPerfil2", props:{location}}} className="btn btn-light" >Editar</Link>
-                        to={{ pathname: "/EditarPerfil",  state:{usuario: location.usuario}}} className="btn btn-light" >Editar</Link>
-                    </div>
+                    {/* <div className="col">
+                        <Link                         
+                            to={{ pathname: "/EditarPerfil",  state:{usuario: location.usuario}}} className="btn btn-light" >Editar</Link>
+                    </div> */}
                 </div>
                 <div className="row">
                     <section className="link">

@@ -12,7 +12,8 @@ const Login = props => {
 
     const Url ="/fazerlogin";    
     const history = useHistory();
-    var resposta = usuariolog;
+    var respft = false;
+    
 
     var [usuariolog, setUsuariolog]=useState(
     {
@@ -63,7 +64,7 @@ const Login = props => {
         delete usuariolog.id;
         try 
         {
-            fetch('http://10.0.0.172:3055/fazerlogin', requestOptions)
+            respft = fetch('http://10.0.0.172:3055/fazerlogin', requestOptions)
             .then(  // response => response.json().then()
             // .then(data => setPostId(data.id)
             
@@ -73,9 +74,10 @@ const Login = props => {
             //     'Access-Control-Allow-Origin':'*',
             //     'Content-Type': 'application/json;charset=UTF-8',
             // }
+                localStorage.setItem('apelido', usuariolog.nomelogin),
                 history.push({ pathname: '/Perfil',  usuario: usuariolog })
             );
-            localStorage.setItem('apelido', usuariolog.apelidoLogin)
+            
             // localStorage.setItem('token', response.data.token)
             
             // Apos login Confere se encontrou um usuario 
