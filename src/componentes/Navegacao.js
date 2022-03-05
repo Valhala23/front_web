@@ -21,10 +21,6 @@ const Navegacao = () => {
                                 <Link to="/" className="nav-link">Home</Link>
                             </li>
                             <li>
-                                <Link to="/Produto" className="nav-link">Produtos</Link>
-                            </li>
-
-                            <li>
                                 {/* <Link to="/Esp" className="nav-link">Esp32</Link> */}
                                 <Link to="/Artigo" className="nav-link">Publicações</Link>
                             </li>

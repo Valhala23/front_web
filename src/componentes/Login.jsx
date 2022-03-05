@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logarimg from '../assets/noun_portal.png';
 import { Link } from 'react-router-dom'
 import api from '../servicos/api'
-import axios from 'axios';
 //import axios from 'axios';
 
 const Login = props => {
@@ -16,21 +15,14 @@ const Login = props => {
     
 
     var [usuariolog, setUsuariolog]=useState(
-    {
-        id: 0,
-        nomelogin: "",
-        descricao: "",
-        bio: "",
-        sexo: null,
-        historico: "",
-        contato: "",
-        observacoes: "",
-        foto: "",
-        apelidoLogin: "",
-        senhalogin: "",
-        token: "",
-        permissao: 0
-    });
+        {
+            id: 0,
+            nome: '',
+            nomelogin: '',
+            senhalogin: '',
+            permit: 0
+        }
+    );
     
 
     const handleChange = e=> 
@@ -43,57 +35,27 @@ const Login = props => {
             [name]: value
     });
     }   
-
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: usuariolog
-    };
-   
-    // updateStuff(username, id, stuff){
-    //     return Axios.put(`http://localhost:8080/stuff/${username}`,             {
-                // headers:{
-                //     'Access-Control-Allow-Origin':'*',
-                //     'Content-Type': 'application/json;charset=UTF-8',
-                // }
-    //         })
-    //     }
     
     async function usuarioPost(event) {
-        //event.preventDefault();
         delete usuariolog.id;
-        try 
-        {
-            respft = fetch('http://10.0.0.172:3055/fazerlogin', requestOptions)
-            .then(  // response => response.json().then()
-            // .then(data => setPostId(data.id)
-            
-            // const resposta = await axios.post('localhost:3055/fazerlogin', usuariolog,
-            // // headres: 
-            // {
-            //     'Access-Control-Allow-Origin':'*',
-            //     'Content-Type': 'application/json;charset=UTF-8',
-            // }
-                localStorage.setItem('apelido', usuariolog.nomelogin),
+
+        try {
+            await api.post('http://10.0.0.172:3055/fazerloginapi', usuariolog)
+            .then(async response => {
+              // setData(response.data);
+              if(response.data){
+                // history.push('/');
                 history.push({ pathname: '/Perfil',  usuario: usuariolog })
-            );
-            
-            // localStorage.setItem('token', response.data.token)
-            
-            // Apos login Confere se encontrou um usuario 
-            // if(response.data.user.id > 0){
-            //     setUsuariolog(usuariolog = response.data.user)
-            //     console.log('Resultado normal: '+ usuariolog.nomelogin + " senha: " + usuariolog.senhalogin)
-
-            //     const uNome = usuariolog.nomelogin;
-
-            //     history.push({ pathname: '/Perfil',  usuario: usuariolog })
-            // }
-        }catch(erro)
-        {
-            alert("Erro ao logar " + erro);  
+              }else{
+                console.log("error ao salvar");    
+              }
+            }).catch(error=> {
+              console.log(error);
+            })            
+        } catch (error) {
+            console.log(error);
         }
-    } 
+      }  
     return(        
     <div className="login">
         <div className="imagemlogin img-fluid">
