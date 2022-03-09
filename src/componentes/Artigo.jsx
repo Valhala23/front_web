@@ -1,10 +1,25 @@
-import React, { Component, useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import './estilos/Esp32.scss';
 
 function Artigo(){
-    var logado  = false;
+
+    const baseUrl ="http://localhost:3055/artigolista";
+    const [data, setData]=useState([]);
+
+    const pedidoGet = async()=>{
+      await axios.get(baseUrl)
+      .then(response => {
+        setData(response.data);
+      }).catch(error=> {
+        console.log(error);
+      })
+    }
+
+    useEffect(()=>{
+        pedidoGet();
+      })    
 
     return(
         <div>
@@ -15,15 +30,30 @@ function Artigo(){
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col">
-                        <div className="toggle-switch">
-                            <h2>Titulo;</h2>
-                            <p>Descrição:</p>
-                            <p>Imagem</p>
-                            <p>tags / participantes </p>
-                        </div>
-                    </div>
+                    <table className="table table-bordered">
+                        <thead>
+                            <tr>
+                            <th>Código</th> <th>Titulo</th> <th>Descrição</th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data.map(artigo=> (
+                                <tr key={artigo.codigo}>
+                                <td> {artigo.codigo }</td>
+                                <td> {artigo.titulo }</td>
+                                <td> {artigo.descricao }</td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
+                
+                <div className="div">
+                    <button className="btn btn-danger">
+                        Publicar novo
+                    </button>
+                </div>
+
             </div>
 
         </div>

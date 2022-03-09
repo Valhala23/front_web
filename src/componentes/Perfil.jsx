@@ -25,7 +25,7 @@ function Perfil(props){
         try 
         {            
             await dados.append('arquivo', imgDados, location.usuario.nome)
-            await api.post('http://10.0.0.172:5001/api/imagem/upload', dados)
+            await api.post('http://localhost:5001/api/imagem/upload', dados)
             // .then(res => {
             // console.log(res.data + 'this is data after api call');         
             // })

@@ -7,7 +7,7 @@ import logoCad from '../assets/iconepc.png';
 
 export default function Produto() {
 
-  const baseUrl ="http://10.0.0.172:5001/api/Produtos";
+  const baseUrl ="http://localhost:5001/api/Produtos";
 
   const [data, setData]=useState([]);
 

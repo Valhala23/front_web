@@ -40,11 +40,11 @@ const Login = props => {
         delete usuariolog.id;
 
         try {
-            await api.post('http://10.0.0.172:3055/fazerloginapi', usuariolog)
+            await api.post('http://localhost:3055/fazerloginapi', usuariolog)
             .then(async response => {
               // setData(response.data);
               if(response.data){
-                // history.push('/');
+                // console.log(response.data)
                 history.push({ pathname: '/Perfil',  usuario: usuariolog })
               }else{
                 console.log("error ao salvar");    
@@ -67,7 +67,7 @@ const Login = props => {
             <input type="password" placeholder="Senha" name="senhalogin" onChange={handleChange} />
         </div>
         <div className="btnconfirma">
-            <button class="button" class="btn btn-secondary btn-sm" type="submit" onClick={usuarioPost}>Logar</button>
+            <button class="btn btn-secondary btn-sm" type="submit" onClick={usuarioPost}>Logar</button>
         </div>
         <div className="btncadastrp">
             <Link to="/CadLogin" class="btn btn-info" >Cadastrar login</Link>

@@ -42,7 +42,7 @@ function Perfil(props){
         // com o objeto usuario recebido pegar id e enviar para o metodo update                
         // location.state.state.usuario.id
         try {
-            await api.put('http://10.0.0.172:5001/api/Usuario/'+ usuariolog.id, usuariolog)
+            await api.put('http://localhost:5001/api/Usuario/'+ usuariolog.id, usuariolog)
             .then(async response => {
               history.push({ pathname: '/Perfil',  usuario: usuariolog })
             }).catch(error=> {
