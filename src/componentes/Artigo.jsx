@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import './estilos/Esp32.scss';
@@ -49,9 +50,9 @@ function Artigo(){
                 </div>
                 
                 <div className="div">
-                    <button className="btn btn-danger">
-                        Publicar novo
-                    </button>
+                    {/* <button className="btn btn-danger" onClick={postarNovo}> Publicar novo </button> */}
+                    <Link to="/Publicar" class="btn btn-info" >Publicar novo</Link>
+
                 </div>
 
             </div>
