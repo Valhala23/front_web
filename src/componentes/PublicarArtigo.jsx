@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-// import	{ useHistory } from 'react-router-dom';
+import	{ useHistory } from 'react-router-dom';
 import './estilos/CadastroLogin.css'
 import api from '../servicos/api'
 import 'bootstrap/dist/css/bootstrap.min.css';
 function Publicar(){
 
-    // const baseUrl ="http://localhost:5001/api/Usuario/cadastrarnovo";
-    // const history = useHistory();
-    // const [data, setData]=useState([]);
+    const history = useHistory();
 
     const [artigo, setArtigo]=useState(
         {
@@ -23,16 +21,16 @@ function Publicar(){
         const {name, value}=e.target;
         setArtigo(
         {
-            ...usuariolog,
+            ...artigo,
             [name]: value
         });        
     }  
     
     const artigoPost = async()=>{        
-        delete usuariolog.id;
+        delete artigo.codigo;
 
         try {
-            await api.post('http://localhost:3055/salvarartigo', usuariolog)
+            await api.post('http://localhost:3055/salvarartigo', artigo)
             .then(async response => {
               // setData(response.data);
               if(response.data){
@@ -51,29 +49,20 @@ function Publicar(){
     return(        
         <div className="publica">            
             <div className="menupublicar">
-                <h1>Cadastro</h1>
-                <h2>Login</h2>
+                <h1>Publicar</h1>
+                <h2>Artigo</h2>
             </div>
             <div className="formulario">
-                <div className="card">   
-                    <div className="card-body">
-                        <div className="row">
-                            <div className="col">
-                                <label>Acesso</label>
-                            </div>
-                        </div>
-                    </div>                                          
-                </div>
                 <div className="camposcad">
                     <div className="row">
                         <div className="col">
-                            <label>Nome</label>
+                            <label>Observação</label>
                             <input type="text" name="nome" onChange={handleChange} />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
-                            <label>Apelido</label>
+                            <label>Titulo</label>
                         </div>
                     </div>
                     <div className="row">
@@ -83,8 +72,8 @@ function Publicar(){
                     </div>
                     <div className="row">
                         <div className="col">
-                        <label>Senha</label>
-                            <input type="password" name="descricao" onChange={handleChange} />
+                        <label>Descriçao</label>
+                            <input type="text" name="descricao" onChange={handleChange} />
                         </div>
                     </div>
                     <div className="row">
