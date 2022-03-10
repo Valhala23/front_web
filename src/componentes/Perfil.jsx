@@ -47,8 +47,7 @@ function Perfil(props){
                         {/* <h2>Nome: {location.usuario.nome} </h2> */}
                         <h2>Nome:  </h2>
                     </div>
-                    <div className="col">
-                        <h2>Apelido: {location.usuario.nomelogin} </h2>
+                    <div className="col">                        <h2>Apelido: {location.usuario.nomelogin} </h2>
                     </div>
                     <div className="col">
                         <div className="foto">
