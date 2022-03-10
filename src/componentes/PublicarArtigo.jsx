@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import	{ useHistory } from 'react-router-dom';
-import './estilos/CadastroLogin.css'
+import './estilos/Publicar.css'
 import api from '../servicos/api'
 import 'bootstrap/dist/css/bootstrap.min.css';
 function Publicar(){

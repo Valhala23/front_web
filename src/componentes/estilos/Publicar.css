@@ -1,0 +1,77 @@
+.publica {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 1%;
+    margin-bottom: 5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+.menupublicar {
+    display: block;
+    height: 95%;
+    width: 90%;
+    background-color: rgb(143, 144, 145);
+    border: 3px solida white;
+    margin-top: 2%;    
+    margin-left: 5%;
+    margin-bottom: 1%;
+    color: whitesmoke;
+    border-radius: 7px;    
+}
+
+.camposcad {    
+    margin-top: 5%;
+    margin-bottom: 0;  
+    margin-top: -18%;  
+}
+
+.formulario {    
+    margin-left: 5%;
+    margin-right: 10%;
+    margin-top: 8%;
+    margin-bottom: 0;
+    margin-bottom: 2%;
+
+}
+
+.formulario input {    
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 1%;
+    max-width: 50%;
+    margin-bottom: 5%;
+    border: 1px solid #555;
+    border-radius: 5px;
+}
+
+.formulario label {
+    margin-left: 10%;
+}
+
+.formulario input[type=radio] {
+    margin-left: 25%;
+    margin-right: 10%;
+}
+
+form button {
+    margin-top: 5%;
+    margin-bottom: 10%;
+    display: right;
+    text-align: center;
+}
+
+.card {
+    display: flex;
+    background-color: lightgray;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+    max-width: 30%;
+    max-height: 10%;
+    transition: 0.3s;
+    padding: 2%;
+    border-radius: 5px;
+    margin-left: 70%;
+    font-size: 13px;
+    font-family: 'Varela Round', sans-serif;
+}
