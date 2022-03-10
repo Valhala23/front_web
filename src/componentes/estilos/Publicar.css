@@ -1,7 +1,7 @@
 .publica {
     display: flex;
     flex-direction: column;
-    background-color: lightgray;
+    background-color: rgb(245, 138, 138);
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 1%;
@@ -11,26 +11,29 @@
 .menupublicar {
     display: block;
     height: 95%;
-    width: 90%;
-    background-color: rgb(143, 144, 145);
+    width: 90%;    
+    background-color: rgb(103, 118, 132);
     border: 3px solida white;
     margin-top: 2%;    
     margin-left: 5%;
-    margin-bottom: 1%;
+    margin-bottom: 10%;
     color: whitesmoke;
     border-radius: 7px;    
 }
 
+.menupublicar h2 {
+    margin-left: 10ch;
+}
+
 .camposcad {    
     margin-top: 5%;
-    margin-bottom: 0;  
-    margin-top: -18%;  
+    margin-bottom: 5ch;  
 }
 
 .formulario {    
     margin-left: 5%;
     margin-right: 10%;
-    margin-top: 8%;
+    margin-top: 5%;
     margin-bottom: 0;
     margin-bottom: 2%;
 
@@ -44,15 +47,6 @@
     margin-bottom: 5%;
     border: 1px solid #555;
     border-radius: 5px;
-}
-
-.formulario label {
-    margin-left: 10%;
-}
-
-.formulario input[type=radio] {
-    margin-left: 25%;
-    margin-right: 10%;
 }
 
 form button {

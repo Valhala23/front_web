@@ -76,12 +76,12 @@ function Publicar(){
                             <input type="text" name="descricao" onChange={handleChange} />
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col">
-                            <button style={{float: 'right'}} type="button" className="btn btn-secondary" onClick={()=> artigoPost()}>Cadastrar</button>
-                        </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                        <button style={{float: 'right'}} type="button" className="btn btn-secondary" onClick={()=> artigoPost()}>Cadastrar</button>
                     </div>
-                </div>                
+                </div>                                
             </div>            
         </div>
     );    
