@@ -47,7 +47,8 @@ const Login = props => {
                 // console.log(response.data)
                 history.push({ pathname: '/Perfil',  usuario: usuariolog })
               }else{
-                console.log("error ao salvar");    
+                console.log("error ao ao logar");
+                console.log('não encontrado')    
               }
             }).catch(error=> {
               console.log(error);

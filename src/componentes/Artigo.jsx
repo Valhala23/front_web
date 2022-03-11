@@ -9,7 +9,7 @@ function Artigo(){
     const baseUrl ="http://localhost:3055/artigolista";
     const [data, setData]=useState([]);
 
-    const pedidoGet = async()=>{
+    const artigoGet = async()=>{
       await axios.get(baseUrl)
       .then(response => {
         setData(response.data);
@@ -19,7 +19,7 @@ function Artigo(){
     }
 
     useEffect(()=>{
-        pedidoGet();
+        artigoGet();
       })    
 
     return(
@@ -34,7 +34,7 @@ function Artigo(){
                     <table className="table table-bordered">
                         <thead>
                             <tr>
-                            <th>Código</th> <th>Titulo</th> <th>Descrição</th> 
+                            <th>Código</th> <th>Titulo</th> <th>Descrição</th> <th>Detalhar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,6 +43,7 @@ function Artigo(){
                                 <td> {artigo.codigo }</td>
                                 <td> {artigo.titulo }</td>
                                 <td> {artigo.descricao }</td>
+                                <td><Link to="/Publicar" class="btn btn"> Ver</Link></td>
                             </tr>
                             ))}
                         </tbody>
