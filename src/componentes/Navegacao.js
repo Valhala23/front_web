@@ -9,6 +9,7 @@ import EditarPerfil from './EditarPerfil'
 import './estilos/Navegacao.css'
 import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Detalhe from './DetalheArtigo';
 
 const Navegacao = () => {
     return (
@@ -38,6 +39,7 @@ const Navegacao = () => {
                 <Route path="/Produto"> <Produto/>         </Route>
                 <Route path="/Login"> <Login/>             </Route>
                 <Route path="/Artigo"> <Artigo/>           </Route>
+                <Route path="/DetalheArtigo"> <Detalhe/>           </Route>
                 <Route path="/Publicar"> <Publicar/> </Route>
                 <Route path="/Perfil"> <Perfil/>           </Route>
                 <Route path="/CadLogin"> <CadastroLogin/>  </Route>
