@@ -40,15 +40,19 @@ const Login = props => {
         delete usuariolog.id;
 
         try {
-            await api.post('http://localhost:3055/fazerloginapi', usuariolog)
+            await api.post('http://10.0.0.172:3055/fazerloginapi', usuariolog, {
+                auth: {
+                    username: 'ricardo',
+                    password: 'rba'
+                  }
+            })
             .then(async response => {
               // setData(response.data);
               if(response.data){
-                // console.log(response.data)
+                // history.push('/');
                 history.push({ pathname: '/Perfil',  usuario: usuariolog })
               }else{
-                console.log("error ao ao logar");
-                console.log('não encontrado')    
+                console.log("error ao salvar");    
               }
             }).catch(error=> {
               console.log(error);
