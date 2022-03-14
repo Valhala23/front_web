@@ -48,7 +48,7 @@ function Artigo(){
                                 <td> {artigo.codigo }</td>
                                 <td> {artigo.titulo }</td>
                                 <td> {artigo.descricao }</td>
-                                <td><Link to="/DetalheArtigo" class="btn btn"> Ver: {artigo.codigo} </Link></td>
+                                <td><Link to="/DetalheArtigo" className="btn btn"> Ver: {artigo.codigo} </Link></td>
                             </tr>
                             ))}
                         </tbody>
@@ -57,7 +57,7 @@ function Artigo(){
                 
                 <div className="div">
                     {/* <button className="btn btn-danger" onClick={postarNovo}> Publicar novo </button> */}
-                    <Link to="/Publicar" class="btn btn-info" >Publicar novo</Link>
+                    <Link to="/Publicar" className="btn btn-info" >Publicar novo</Link>
                 </div>
 
             </div>

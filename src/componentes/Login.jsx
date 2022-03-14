@@ -72,10 +72,10 @@ const Login = props => {
             <input type="password" placeholder="Senha" name="senhalogin" onChange={handleChange} />
         </div>
         <div className="btnconfirma">
-            <button class="btn btn-secondary btn-sm" type="submit" onClick={usuarioPost}>Logar</button>
+            <button classclassName="btn btn-secondary btn-sm" type="submit" onClick={usuarioPost}>Logar</button>
         </div>
         <div className="btncadastrp">
-            <Link to="/CadLogin" class="btn btn-info" >Cadastrar login</Link>
+            <Link to="/CadLogin" className="btn btn-info" >Cadastrar login</Link>
         </div>
     </div>
     );    
