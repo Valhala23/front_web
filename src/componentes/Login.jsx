@@ -40,11 +40,11 @@ const Login = props => {
         delete usuariolog.id;
 
         try {
-            await api.post('http://10.0.0.172:3055/fazerloginapi', usuariolog, {
+            await api.post('http://localhost:3055/fazerloginapi', usuariolog, {
                 auth: {
                     username: 'ricardo',
                     password: 'rba'
-                  }
+                  }, headers: {"Access-Control-Allow-Origin": "*"}
             })
             .then(async response => {
               // setData(response.data);
@@ -72,7 +72,7 @@ const Login = props => {
             <input type="password" placeholder="Senha" name="senhalogin" onChange={handleChange} />
         </div>
         <div className="btnconfirma">
-            <button classclassName="btn btn-secondary btn-sm" type="submit" onClick={usuarioPost}>Logar</button>
+            <button className="btn btn-secondary btn-sm" type="submit" onClick={usuarioPost}>Logar</button>
         </div>
         <div className="btncadastrp">
             <Link to="/CadLogin" className="btn btn-info" >Cadastrar login</Link>
