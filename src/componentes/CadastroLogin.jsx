@@ -41,7 +41,7 @@ function CadLogin(){
               if(response.data){
                 history.push('/');
               }else{
-                console.log("error ao salvar");    
+                console.log("error ao fazer login");    
               }
             }).catch(error=> {
               console.log(error);

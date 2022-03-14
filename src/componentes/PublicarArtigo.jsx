@@ -37,9 +37,8 @@ function Publicar(){
                   }
             })
             .then(async response => {
-              // setData(response.data);
               if(response.data){
-                history.push('/');
+                history.push('/Artigo');
               }else{
                 console.log("error ao publicar");    
               }
