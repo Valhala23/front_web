@@ -35,12 +35,7 @@ function CadLogin(){
         delete usuariolog.id;
 
         try {
-            await api.post('http://localhost:3055/salvaloginapi', usuariolog, {
-                auth: {
-                    username: 'ricardo',
-                    password: 'rba'
-                  }
-            })            
+            await api.post('http://localhost:3055/salvaloginapi', usuariolog)            
             .then(async response => {
               // setData(response.data);
               if(response.data){
