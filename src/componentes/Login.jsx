@@ -40,17 +40,13 @@ const Login = props => {
         delete usuariolog.id;
 
         try {
-            await api.post('http://localhost:3055/fazerloginapi', usuariolog, {
-                auth: {
-                    username: 'ricardo',
-                    password: 'rba'
-                  }, headers: {"Access-Control-Allow-Origin": "*"}
-            })
+            await api.post('http://localhost:3055/fazerloginapi', usuariolog)
             .then(async response => {
               // setData(response.data);
               if(response.data){
-                // history.push('/');
+                localStorage.setItem('nome', response.data)
                 history.push({ pathname: '/Perfil',  usuario: usuariolog })
+                console.log('salvo dados  ' + localStorage.getItem('nome'))
               }else{
                 console.log("error ao fazer login");    
               }
