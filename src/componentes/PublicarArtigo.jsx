@@ -31,10 +31,10 @@ function Publicar(){
 
         try {
             await api.post('http://localhost:3055/salvarartigo', artigo, {
-                auth: {
-                    username: 'ricardo',
-                    password: 'rba'
-                  }
+                // auth: {
+                //     username: 'admin',
+                //     password: 'admin'
+                //   }
             })
             .then(async response => {
               if(response.data){

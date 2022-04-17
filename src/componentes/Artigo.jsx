@@ -11,12 +11,12 @@ function Artigo(){
 
     const artigoGet = async()=>{
       await axios.get(baseUrl
-        , {
-        auth: {
-            username: 'ricardo',
-            password: 'rba'
-          }
-        }
+        // , {
+        // auth: {
+        //     username: 'admin',
+        //     password: 'admin'
+        //   }
+        // }
     )
       .then(response => {
         setData(response.data);
@@ -26,8 +26,9 @@ function Artigo(){
     }
 
     useEffect(()=>{
-        artigoGet();
-      })    
+        artigoGet()
+        console.log('Interval triggered');
+    }, 1000);      
 
     return(
         <div>
