@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logarimg from '../assets/noun_portal.png';
 import { Link } from 'react-router-dom'
 import api from '../servicos/api'
+import axios from 'axios';
+import qs from 'qs';
 //import axios from 'axios';
 
 const Login = props => {    
@@ -15,6 +17,7 @@ const Login = props => {
             password: ''
         }
     );
+    const url = 'http://localhost:3055/blog/login'
     
 
     const handleChange = e=> 
@@ -29,23 +32,20 @@ const Login = props => {
     }   
     
     async function usuarioPost(event) {
-        const formData = new FormData();
-        formData.append('username', usuariolog.username);
-        formData.append('password', usuariolog.password);
 
         try {
-            await api.post('http://localhost:3055/blog/login', usuariolog)
+            const options = {
+                method: 'POST',
+                headers: { 'content-type': 'application/x-www-form-urlencoded' },
+                data: qs.stringify(usuariolog),
+                url,
+              };             
+
+            await axios(options) 
+
             .then(async response => {
                 console.log(response.data)
 
-            //   if(response.data){
-            //     console.log(response.data)
-            //     localStorage.setItem('access_token', response.data)
-            //     history.push({ pathname: '/Perfil',  usuario: usuariolog })
-            //     console.log('salvo dados  ' + localStorage.getItem('access_token'))
-            //   }else{
-            //     console.log("error ao fazer login");    
-            //   }
             }).catch(error=> {
               console.log(error);
             })            
