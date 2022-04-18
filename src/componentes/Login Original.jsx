@@ -7,12 +7,20 @@ import { Link } from 'react-router-dom'
 import api from '../servicos/api'
 //import axios from 'axios';
 
-const Login = props => {    
+const Login = props => {
+
+    const Url ="/fazerlogin";    
+    const history = useHistory();
+    var respft = false;
+    
 
     var [usuariolog, setUsuariolog]=useState(
         {
-            username: '',
-            password: ''
+            id: 0,
+            nome: '',
+            nomelogin: '',
+            senhalogin: '',
+            permit: 0
         }
     );
     
@@ -29,23 +37,19 @@ const Login = props => {
     }   
     
     async function usuarioPost(event) {
-        const formData = new FormData();
-        formData.append('username', usuariolog.username);
-        formData.append('password', usuariolog.password);
+        delete usuariolog.id;
 
         try {
-            await api.post('http://localhost:3055/blog/login', usuariolog)
+            await api.post('http://localhost:3055/fazerloginapi', usuariolog)
             .then(async response => {
-                console.log(response.data)
-
-            //   if(response.data){
-            //     console.log(response.data)
-            //     localStorage.setItem('access_token', response.data)
-            //     history.push({ pathname: '/Perfil',  usuario: usuariolog })
-            //     console.log('salvo dados  ' + localStorage.getItem('access_token'))
-            //   }else{
-            //     console.log("error ao fazer login");    
-            //   }
+              // setData(response.data);
+              if(response.data){
+                localStorage.setItem('nome', response.data)
+                history.push({ pathname: '/Perfil',  usuario: usuariolog })
+                console.log('salvo dados  ' + localStorage.getItem('nome'))
+              }else{
+                console.log("error ao fazer login");    
+              }
             }).catch(error=> {
               console.log(error);
             })            
@@ -60,8 +64,8 @@ const Login = props => {
         </div>
 
         <div className="camposlogin form-group"> 
-            <input type="text" placeholder="Login" name="username" onChange={handleChange}></input>                
-            <input type="password" placeholder="Senha" name="password" onChange={handleChange} />
+            <input type="text" placeholder="Login" name="nomelogin" onChange={handleChange}></input>                
+            <input type="password" placeholder="Senha" name="senhalogin" onChange={handleChange} />
         </div>
         <div className="btnconfirma">
             <button className="btn btn-secondary btn-sm" type="submit" onClick={usuarioPost}>Logar</button>
