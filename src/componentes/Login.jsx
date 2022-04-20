@@ -9,7 +9,8 @@ import axios from 'axios';
 import qs from 'qs';
 //import axios from 'axios';
 
-const Login = props => {    
+const Login = props => {  
+    const history = useHistory();  
 
     var [usuariolog, setUsuariolog]=useState(
         {
@@ -45,6 +46,14 @@ const Login = props => {
 
             .then(async response => {
                 console.log(response.data)
+                
+                if(response.data){
+                    localStorage.setItem('tokens', response.data.access_token)
+                    history.push({ pathname: '/Perfil',  usuario: usuariolog })
+                    console.log('salvo dados  ' + localStorage.getItem('tokens'))
+                  }else{
+                    console.log("error ao fazer login");    
+                  }
 
             }).catch(error=> {
               console.log(error);
