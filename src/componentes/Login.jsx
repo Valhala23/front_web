@@ -4,7 +4,6 @@ import './estilos/Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logarimg from '../assets/noun_portal.png';
 import { Link } from 'react-router-dom'
-import api from '../servicos/api'
 import axios from 'axios';
 import qs from 'qs';
 //import axios from 'axios';

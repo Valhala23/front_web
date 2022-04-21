@@ -30,11 +30,10 @@ function Publicar(){
         delete artigo.codigo;
 
         try {
-            await api.post('http://localhost:3055/salvarartigo', artigo, {
-                // auth: {
-                //     username: 'admin',
-                //     password: 'admin'
-                //   }
+            await api.post('http://localhost:3055/salvarartigo', artigo, 
+            { headers: {          
+                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+            }
             })
             .then(async response => {
               if(response.data){
