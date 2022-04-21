@@ -10,8 +10,10 @@ function Artigo(){
     const [data, setData]=useState([]);
 
     const artigoGet = async()=>{
-      await axios.get(baseUrl, {
-        Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()
+      await axios.get(baseUrl, 
+        { headers: {          
+            Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+        }
       })
       .then(response => {
         setData(response.data);
