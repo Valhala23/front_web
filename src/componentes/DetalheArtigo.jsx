@@ -6,7 +6,7 @@ import './estilos/Detal.css';
 
 function Detalhe(){
 
-    const baseUrl ="http://localhost:3055/artigodettalhe";
+    const baseUrl ="http://45.191.187.35:3033/artigodettalhe";
     const [data, setData]=useState([]);
 
     const detalhrGet = async()=>{

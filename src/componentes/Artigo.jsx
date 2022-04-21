@@ -6,7 +6,7 @@ import './estilos/Esp32.scss';
 
 function Artigo(){
 
-    const baseUrl ="http://localhost:3055/artigolista";
+    const baseUrl ="http://45.191.187.35:3033/artigolista";
     const [data, setData]=useState([]);
 
     const artigoGet = async()=>{
