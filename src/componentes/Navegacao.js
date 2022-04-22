@@ -1,7 +1,7 @@
 import React from 'react'
-import Produto from './Produto';
 import Login from './Login';
 import Artigo from './Artigo';
+import PainelMestre from './PainelMestre';
 import Publicar from './PublicarArtigo';
 import Perfil from './Perfil';
 import CadastroLogin from './CadastroLogin'
@@ -35,13 +35,13 @@ const Navegacao = () => {
 
             <Switch>
                 <Route exact path="/"> <Login/>            </Route>
-                <Route path="/Produto"> <Produto/>         </Route>
                 <Route path="/Login"> <Login/>             </Route>
                 <Route path="/Artigo"> <Artigo/>           </Route>
-                <Route path="/DetalheArtigo"> <Detalhe/>           </Route>
-                <Route path="/Publicar"> <Publicar/> </Route>
+                <Route path="/DetalheArtigo"> <Detalhe/>   </Route>
+                <Route path="/Publicar"> <Publicar/>       </Route>
                 <Route path="/Perfil"> <Perfil/>           </Route>
                 <Route path="/CadLogin"> <CadastroLogin/>  </Route>
+                <Route path="/PainelMestre"> <PainelMestre/>           </Route>
                 <Route path="/EditarPerfil" component={EditarPerfil} /> 
             </Switch>
         </div>

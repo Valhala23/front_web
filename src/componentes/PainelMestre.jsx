@@ -6,12 +6,12 @@ import './estilos/Esp32.scss';
 
 function PainelMestre(){
 
-    const baseUrl ="http://localhost:3033/";
-    const baseUrlExterno ="http://45.191.187.35:3033/";
+    const baseUrlListagem ="http://localhost:3033/loginsapi";
+    const baseUrlExternoListagem ="http://45.191.187.35:3033/loginsapi";
     const [data, setData]=useState([]);
 
     const artigoGet = async()=>{
-      await axios.get(baseUrl, 
+      await axios.get(baseUrlListagem, 
         { headers: {          
             Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
         }
@@ -40,16 +40,16 @@ function PainelMestre(){
                     <table className="table table-bordered">
                         <thead>
                             <tr>
-                            <th>Código</th> <th>Titulo</th> <th>Descrição</th> <th>Detalhar</th>
+                            <th>Código</th> <th>Nome</th> <th>Permissão</th> <th>Alterar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map(artigo=> (
-                                <tr key={artigo.codigo}>
-                                <td> {artigo.codigo }</td>
-                                <td> {artigo.titulo }</td>
-                                <td> {artigo.descricao }</td>
-                                <td><Link to="/DetalheArtigo" className="btn btn"> Ver: {artigo.codigo} </Link></td>
+                            {data.map(login=> (
+                                <tr key={login.id}>
+                                <td> {login.id }</td>
+                                <td> {login.username }</td>
+                                <td> {login.roles.length}</td>
+                                <td><Link to="/DetalheArtigo" className="btn btn"> Ver: {login.codigo} </Link></td>
                             </tr>
                             ))}
                         </tbody>
