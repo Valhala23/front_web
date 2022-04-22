@@ -4,10 +4,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import './estilos/Esp32.scss';
 
-function Artigo(){
+function PainelMestre(){
 
-    const baseUrl ="http://localhost:3033/artigolista";
-    const baseUrlExterno ="http://45.191.187.35:3033/artigolista";
+    const baseUrl ="http://localhost:3033/";
+    const baseUrlExterno ="http://45.191.187.35:3033/";
     const [data, setData]=useState([]);
 
     const artigoGet = async()=>{
@@ -67,5 +67,4 @@ function Artigo(){
     );    
 }
 
-
-export default Artigo;
+export default PainelMestre;

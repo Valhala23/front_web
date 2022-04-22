@@ -17,7 +17,8 @@ const Login = props => {
             password: ''
         }
     );
-    const url = 'http://45.191.187.35:3033/blog/login'
+    const url = 'http://localhost:3033/blog/login'
+    const urlExterno = 'http://45.191.187.35:3033/blog/login'
     
 
     const handleChange = e=> 
