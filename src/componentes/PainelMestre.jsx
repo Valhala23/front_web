@@ -1,14 +1,50 @@
 import React, { useEffect, useState } from 'react';
+import	{ useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import './estilos/Esp32.scss';
+//import './estilos/Esp32.scss';
 
 function PainelMestre(){
 
+    const history = useHistory();
+
     const baseUrlListagem ="http://localhost:3033/loginsapi";
     const baseUrlExternoListagem ="http://45.191.187.35:3033/loginsapi";
-    const [data, setData]=useState([]);
+    const [data, setData]=useState([]);    
+    
+    const [permissao, setPermissao]=useState(
+        {
+          username: 'jos',
+          roleName: 'ROLE_ADMIN'
+        }
+    ); 
+
+    async function adicionarolePost(nomerol) {        
+
+        try {
+            // Dine para qual usuario vai dar a permissão
+            permissao.username = nomerol
+
+            await axios.post('http://45.191.187.35:3033/adicionaroleapi', permissao, 
+            { headers: {          
+                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+            }
+            })
+            .then(async response => {
+                if(response.data){
+                // history.push('/PainelMestre');
+                }else{
+                    console.log("error ao publicar");    
+                }
+            }).catch(error=> {
+              console.log(error);
+            })            
+        } catch (error) {
+            console.log(error);
+        }
+      }   
+
 
     const artigoGet = async()=>{
       await axios.get(baseUrlListagem, 
@@ -49,7 +85,7 @@ function PainelMestre(){
                                 <td> {login.id }</td>
                                 <td> {login.username }</td>
                                 <td> {login.roles.length}</td>
-                                <td><Link to="/DetalheArtigo" className="btn btn"> Ver: {login.codigo} </Link></td>
+                                <td><button onClick={()=> adicionarolePost(login.username)} className="btn btn"> Definir Adm: {login.id} </button></td>
                             </tr>
                             ))}
                         </tbody>

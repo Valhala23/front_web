@@ -59,23 +59,6 @@ function CadLogin(){
                 <h2>Login</h2>
             </div>
             <div className="formulario">
-                <div className="card">   
-                    <div className="card-body">
-                        <div className="row">
-                            <div className="col">
-                                <label>Acesso</label>
-                            </div>
-                            </div>
-                            <div className="row">
-                                <div className="col">
-                                    <input type="radio" name="permit" value="0" onChange={handleChange}/>Adm
-                                    <input type="radio" name="permit" value="1" onChange={handleChange}/>User
-
-                                    {/* <input type="number" name="permissao" value="1" onChange={handleChange}/>User */}
-                                </div>
-                        </div>
-                    </div>                                          
-                </div>
                 <div className="camposcad">
                     <div className="row">
                         <div className="col">
