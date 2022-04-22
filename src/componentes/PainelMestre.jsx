@@ -33,7 +33,7 @@ function PainelMestre(){
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        <h1> Lista de Artigos publicados </h1>
+                        <h1> Lista de Logins e suas Permissões </h1>
                     </div>
                 </div>
                 <div className="row">
