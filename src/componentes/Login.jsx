@@ -17,7 +17,7 @@ const Login = props => {
             password: ''
         }
     );
-    const url = 'http://localhost:3033/blog/login'
+    const url = 'http://10.0.0.172:3033/blog/login'
     const urlExterno = 'http://45.191.187.35:3033/blog/login'
     
 
@@ -35,6 +35,7 @@ const Login = props => {
     async function usuarioPost(event) {
 
         try {
+            console.log('tentoulogar')
             const options = {
                 method: 'POST',
                 headers: { 'content-type': 'application/x-www-form-urlencoded' },

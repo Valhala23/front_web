@@ -11,7 +11,7 @@ function Artigo(){
     const [data, setData]=useState([]);
 
     const artigoGet = async()=>{
-      await axios.get(baseUrl, 
+      await axios.get(baseUrlExterno, 
         { headers: {          
             Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
         }

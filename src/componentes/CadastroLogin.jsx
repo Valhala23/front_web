@@ -36,7 +36,7 @@ function CadLogin(){
         delete usuariolog.id;
 
         try {
-            await api.post(baseUrl, usuariolog)            
+            await api.post(baseUrlExterno, usuariolog)            
             .then(async response => {
               // setData(response.data);
               if(response.data){

@@ -47,7 +47,7 @@ function PainelMestre(){
 
 
     const artigoGet = async()=>{
-      await axios.get(baseUrlListagem, 
+      await axios.get(baseUrlExternoListagem, 
         { headers: {          
             Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
         }
