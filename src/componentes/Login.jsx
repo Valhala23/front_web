@@ -6,7 +6,6 @@ import logarimg from '../assets/academico.png';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 import qs from 'qs';
-//import axios from 'axios';
 
 const Login = props => {  
     const history = useHistory();  
@@ -18,7 +17,7 @@ const Login = props => {
         }
     );
     const url = 'http://10.0.0.172:3033/blog/login'
-    const urlExterno = 'http://45.191.187.35:3033/blog/login'
+    const urlex = 'http://45.191.187.35:3033/blog/login'
     
 
     const handleChange = e=> 
@@ -36,17 +35,18 @@ const Login = props => {
 
         try {
             console.log('tentoulogar')
-            const options = {
-                method: 'POST',
-                headers: {
-                    'Access-Control-Allow-Origin': true,
-                  },
-                data: qs.stringify(usuariolog),
-                urlExterno,
-              };             
+            // const options = {
+            //     method: 'POST',
+            //     headers: { 
+            //         "Content-Type": "application/x-www-form-urlencoded",
+            //         'Access-Control-Allow-Origin':'*',
+            //       },
+                const datau = qs.stringify(usuariolog)
+            //     urlex,
+            //   };             
 
-            await axios(options) 
-
+            //await axios(options) 
+            await axios.post(urlex, datau)
             .then(async response => {
                 console.log(response.data)
                 
