@@ -38,7 +38,9 @@ const Login = props => {
             console.log('tentoulogar')
             const options = {
                 method: 'POST',
-                headers: { 'content-type': 'application/x-www-form-urlencoded' },
+                headers: {
+                    'Access-Control-Allow-Origin': true,
+                  },
                 data: qs.stringify(usuariolog),
                 url,
               };             
