@@ -42,7 +42,7 @@ const Login = props => {
                     'Access-Control-Allow-Origin': true,
                   },
                 data: qs.stringify(usuariolog),
-                url,
+                urlExterno,
               };             
 
             await axios(options) 
