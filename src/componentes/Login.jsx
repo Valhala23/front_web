@@ -9,6 +9,7 @@ import qs from 'qs';
 
 const Login = props => {  
     const history = useHistory();  
+    localStorage.clear();
 
     var [usuariolog, setUsuariolog]=useState(
         {
@@ -35,17 +36,9 @@ const Login = props => {
 
         try {
             console.log('tentoulogar')
-            // const options = {
-            //     method: 'POST',
-            //     headers: { 
-            //         "Content-Type": "application/x-www-form-urlencoded",
-            //         'Access-Control-Allow-Origin':'*',
-            //       },
-                const datau = qs.stringify(usuariolog)
-            //     urlex,
-            //   };             
 
-            //await axios(options) 
+                const datau = qs.stringify(usuariolog)
+
             await axios.post(urlex, datau)
             .then(async response => {
                 console.log(response.data)

@@ -5,12 +5,13 @@ import axios from 'axios';
 import './estilos/Esp32.scss';
 
 function Artigo(){
-
+    const permit = localStorage.getItem('tokens') == null
     const baseUrl ="http://localhost:3033/artigolista";
     const baseUrlExterno ="http://45.191.187.35:3033/artigolista";
     const [data, setData]=useState([]);
 
     const artigoGet = async()=>{
+    if(!permit){
       await axios.get(baseUrlExterno, 
         { headers: {          
             Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
@@ -22,6 +23,7 @@ function Artigo(){
         console.log(error);
       })
     }
+}
 
     useEffect(()=>{
         artigoGet()
@@ -55,10 +57,12 @@ function Artigo(){
                         </tbody>
                     </table>
                 </div>
-                
+
                 <div className="div">
-                    {/* <button className="btn btn-danger" onClick={postarNovo}> Publicar novo </button> */}
-                    <Link to="/Publicar" className="btn btn-info" >Publicar novo</Link>
+                    {!permit  
+                        ? <Link to="/Publicar" className="btn btn-info"> Publicar novo</Link>
+                        : <h1>Usuario não possui permissões</h1>
+                    }
                 </div>
 
             </div>
