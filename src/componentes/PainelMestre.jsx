@@ -28,7 +28,7 @@ function PainelMestre(){
 
             await axios.post(admin ? 
                 'http://45.191.187.35:3033/adicionaroleapi' : 
-                'http://45.191.187.35:3033/removeroleapi', permissao, 
+                'http://45.191.187.35:3033/removerroleapi', permissao, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
