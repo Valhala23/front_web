@@ -45,7 +45,6 @@ const Login = props => {
                 
                 if(response.data){
                     localStorage.setItem('tokens', response.data.access_token)
-                    
                     history.push({ pathname: '/Perfil',  usuario: usuariolog })
                     console.log('salvo dados  ' + localStorage.getItem('tokens'))
                   }else{
