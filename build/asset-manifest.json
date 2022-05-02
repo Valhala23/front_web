@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ee9b429b.chunk.css",
+    "main.js": "/static/js/main.ab865131.chunk.js",
+    "main.js.map": "/static/js/main.ab865131.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.9e36cf0e.js",
+    "runtime-main.js.map": "/static/js/runtime-main.9e36cf0e.js.map",
+    "static/css/2.0a9ec390.chunk.css": "/static/css/2.0a9ec390.chunk.css",
+    "static/js/2.3805a5ba.chunk.js": "/static/js/2.3805a5ba.chunk.js",
+    "static/js/2.3805a5ba.chunk.js.map": "/static/js/2.3805a5ba.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.0a9ec390.chunk.css.map": "/static/css/2.0a9ec390.chunk.css.map",
+    "static/css/main.ee9b429b.chunk.css.map": "/static/css/main.ee9b429b.chunk.css.map",
+    "static/js/2.3805a5ba.chunk.js.LICENSE.txt": "/static/js/2.3805a5ba.chunk.js.LICENSE.txt",
+    "static/media/academico.cc5edcc4.png": "/static/media/academico.cc5edcc4.png",
+    "static/media/fotoPadrao.100a0345.png": "/static/media/fotoPadrao.100a0345.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9e36cf0e.js",
+    "static/css/2.0a9ec390.chunk.css",
+    "static/js/2.3805a5ba.chunk.js",
+    "static/css/main.ee9b429b.chunk.css",
+    "static/js/main.ab865131.chunk.js"
+  ]
+}
