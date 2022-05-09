@@ -20,13 +20,15 @@ function PainelMestre(){
         }
     ); 
 
-    async function adicionarolePost(nomerol) {        
+    async function adicionarolePost(nomerol, admin) {        
 
         try {
             // Dine para qual usuario vai dar a permissão
             permissao.username = nomerol
 
-            await axios.post('http://45.191.187.35:3033/adicionaroleapi', permissao, 
+            await axios.post(admin ? 
+                'http://45.191.187.35:3033/adicionaroleapi' : 
+                'http://45.191.187.35:3033/removerroleapi', permissao, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
@@ -85,7 +87,8 @@ function PainelMestre(){
                                 <td> {login.id }</td>
                                 <td> {login.username }</td>
                                 <td> {login.roles.length}</td>
-                                <td><button onClick={()=> adicionarolePost(login.username)} className="btn btn"> Definir Adm: {login.id} </button></td>
+                                <td><button onClick={()=> adicionarolePost(login.username, 1)} className="btn btn"> Promover: {login.id} </button></td>
+                                <td><button onClick={()=> adicionarolePost(login.username, 0)} className="btn btn"> Rebaixar: {login.id} </button></td>
                             </tr>
                             ))}
                         </tbody>
