@@ -4,36 +4,24 @@ import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import api from '../servicos/api'
-import fotoPerfilPadrao from '../assets/fotoPadrao.png'
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+
 function Perfil(props){    
     const location = useLocation();    
-    const dados = new FormData()
-    const [picture, setPicture] = useState(fotoPerfilPadrao);
-    var [imgDados, setImgDados] = useState(fotoPerfilPadrao);
-    
-    const onChangePicture = e => {
-        setPicture(URL.createObjectURL(e.target.files[0]) );
-        setImgDados(imgDados = e.target.files[0]);
-    };
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [imageUrl, setImageUrl] = useState(null);
 
-    const config = {
-        'Content-Type': 'multipart/form-data',
-    }
-
-    async function enviarDados(){
-        try 
-        {            
-            await dados.append('arquivo', imgDados, location.usuario.nome)
-            await api.post('http://localhost:5001/api/imagem/upload', dados)
-            // .then(res => {
-            // console.log(res.data + 'this is data after api call');         
-            // })
-        }catch(erro)
-        {
-            alert("Erro ao postar foto " + erro);  
+    useEffect(() => {
+        if (selectedImage) {
+          setImageUrl(URL.createObjectURL(selectedImage));
         }
-    }    
+      }, [selectedImage]);
+    
+    async function postarFoto(){
+        console.log('tentou postar')
+        return 
+    }
 
     return(
         <div>
@@ -45,14 +33,20 @@ function Perfil(props){
                 <div className="row">
                     <div className="col-6">
                         {/* <h2>Nome: {location.usuario.nome} </h2> */}
-                        <h2>Nome:  </h2>
+                        <h2>Nome: {location? null : location.usuario.nomelogin}  </h2>
                     </div>
-                    <div className="col">                        <h2>Apelido: {location.usuario.nomelogin} </h2>
+                    <div className="col">                        <h2>Apelido: {location? null : location.usuario.nomelogin} </h2>
                     </div>
                     <div className="col">
                         <div className="foto">
                             {/* <h2>foto: {location.usuario.foto} </h2> */}
-                            {/* <img className="playerProfilePic_home_tile"  src={picture && picture}></img> */}
+
+                            {imageUrl && selectedImage && (
+                            <Box mt={2} textAlign="center">
+                                <div>Foto Perfil:</div>
+                                <img src={imageUrl} alt={selectedImage.name} height="100px" />
+                            </Box>
+                            )}
                         </div>
                     </div>
                 </div>                       
@@ -92,10 +86,25 @@ function Perfil(props){
                             </div>
                         </div>
                         <div className="col">
-                            <input id="profilePic" type="file" onChange={onChangePicture}/>
+
+                            <input
+                                accept="image/*"
+                                type="file"
+                                id="select-image"
+                                style={{ display: 'none' }}
+                                onChange={e => setSelectedImage(e.target.files[0])}
+                            />
+                            <label htmlFor="select-image">
+                                <Button variant="contained" size='small' color="secondary" component="span">
+                                    Buscar foto
+                                </Button>
+                            </label>
                         </div>
                         <div className="col">
-                            <button onClick={enviarDados}>Postar foto</button>
+                            {/* <button onClick={enviarDados}>Postar foto</button> */}
+                            <button onClick={postarFoto} >
+                                Postar foto
+                            </button>
                         </div>
                     </div>
                 </div>
