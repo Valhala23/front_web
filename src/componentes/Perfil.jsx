@@ -72,7 +72,7 @@ function Perfil(props){
                     </div>
                     <div className="col">
                         <div className="foto">
-                            <h2>foto: {usuarioData? usuarioData.fotoPerfil : null} </h2>
+                            {/* <h2>foto: {usuarioData? usuarioData.fotoPerfil : null} </h2> */}
 
                             {imageUrl && selectedImage && (
                             <Box mt={2} textAlign="center">
