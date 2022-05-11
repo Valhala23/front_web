@@ -1,13 +1,18 @@
-import React, { Component, useState, useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
 import './estilos/Perfil.css'
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 
 function Perfil(props){    
+
+    const baseUrl ="http://localhost:3033/postaFt";
+    const baseUrlExterno ="http://45.191.187.35:3033/postaFt";
+
     const location = useLocation();    
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
@@ -18,10 +23,18 @@ function Perfil(props){
         }
       }, [selectedImage]);
     
-    async function postarFoto(){
-        console.log('tentou postar')
-        return 
-    }
+
+    // codigo para postar foto inicio
+    function postarFoto () {
+        const formData = new FormData();
+        formData.append('image', selectedImage);
+        axios.post(baseUrl,formData)
+            .then(res => {
+                    console.log(res.data);
+                    alert("File uploaded successfully.")
+            })
+    };
+    // fim postar foto
 
     return(
         <div>

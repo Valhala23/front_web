@@ -17,7 +17,7 @@ const Login = props => {
             password: ''
         }
     );
-    const url = 'http://10.0.0.172:3033/blog/login'
+    const url = 'http://localhost:3033/blog/login'
     const urlex = 'http://45.191.187.35:3033/blog/login'
     
 
@@ -39,7 +39,7 @@ const Login = props => {
 
                 const datau = qs.stringify(usuariolog)
 
-            await axios.post(urlex, datau)
+            await axios.post(url, datau)
             .then(async response => {
                 console.log(response.data)
                 
