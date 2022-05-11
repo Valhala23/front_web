@@ -10,6 +10,7 @@ import Box from '@material-ui/core/Box';
 
 function Perfil(props){    
 
+    const userUrl ="http://localhost:3033/getusuario";
     const baseUrl ="http://localhost:3033/postaFt";
     const baseUrlExterno ="http://45.191.187.35:3033/postaFt";
 
@@ -17,24 +18,44 @@ function Perfil(props){
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
 
+    var [usuarioData, setUsuarioData] = useState(null);
+
     useEffect(() => {
         if (selectedImage) {
-          setImageUrl(URL.createObjectURL(selectedImage));
+            setImageUrl(URL.createObjectURL(selectedImage));
         }
       }, [selectedImage]);
     
 
     // codigo para postar foto inicio
     function postarFoto () {
+        if (!selectedImage) {
+            return
+        }
         const formData = new FormData();
         formData.append('image', selectedImage);
         axios.post(baseUrl,formData)
             .then(res => {
-                    console.log(res.data);
-                    alert("File uploaded successfully.")
+                    alert("Imagem salva com sucesso.")
             })
     };
     // fim postar foto
+
+    const imagemGet = async()=>{
+        if(!selectedImage){
+          await axios.get(userUrl, 
+            { headers: {          
+                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+            }
+          })
+          .then(response => {
+            console.log(response.data);
+            setUsuarioData(response.data);
+          }).catch(error=> {
+            console.log(error);
+          })
+        }
+    }
 
     return(
         <div>
@@ -45,14 +66,13 @@ function Perfil(props){
             <div className="container">  
                 <div className="row">
                     <div className="col-6">
-                        {/* <h2>Nome: {location.usuario.nome} </h2> */}
-                        <h2>Nome: {location? null : location.usuario.nomelogin}  </h2>
+                        <h2>Nome: {usuarioData? usuarioData.nomeCompleto : null}  </h2>
                     </div>
-                    <div className="col">                        <h2>Apelido: {location? null : location.usuario.nomelogin} </h2>
+                    <div className="col">                        <h2>Apelido: {usuarioData? usuarioData.descricao : null} </h2>
                     </div>
                     <div className="col">
                         <div className="foto">
-                            {/* <h2>foto: {location.usuario.foto} </h2> */}
+                            <h2>foto: {usuarioData? usuarioData.fotoPerfil : null} </h2>
 
                             {imageUrl && selectedImage && (
                             <Box mt={2} textAlign="center">
@@ -67,12 +87,12 @@ function Perfil(props){
                 <div className="informacoes">
                     <div className="row">
                         <div className="col">
-                            {/* <h2>Bio: {location.usuario.bio} </h2> */}
+                            <h2>Bio: {usuarioData? usuarioData.bio : null} </h2>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
-                            {/* <h2>Descrição: {location.usuario.descricao} </h2> */}
+                            <h2>Descrição: {usuarioData? usuarioData.descricao : null} </h2>
                         </div>
                     </div>
                     <div className="row">
@@ -130,6 +150,13 @@ function Perfil(props){
                         <Link                         
                             to={{ pathname: "/EditarPerfil",  state:{usuario: location.usuario}}} className="btn btn-light" >Editar</Link>
                     </div> */}
+                
+                    <div className="col">
+                        {/* <button onClick={enviarDados}>Postar foto</button> */}
+                        <button onClick={imagemGet} >
+                            Mostrar foto
+                        </button>
+                    </div>
                 </div>
                 <div className="row">
                     <section className="link">
