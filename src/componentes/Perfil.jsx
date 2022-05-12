@@ -14,8 +14,9 @@ function Perfil(props){
     const baseUrl ="http://localhost:3033/postaFt";
     const baseUrlExterno ="http://45.191.187.35:3033/postaFt";
 
-    const [selectedImage, setSelectedImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
+    const [selectedImage, setSelectedImage] = useState(null);
+    
 
     var [usuarioData, setUsuarioData] = useState(null);
     
@@ -29,7 +30,7 @@ function Perfil(props){
             setImageUrl('data:image/jpeg;base64,' + usuarioData.fotoPerfil)
         }
         
-      }, [!usuarioData, imageUrl]);
+      }, [!usuarioData, selectedImage]);
     
 
     // codigo para postar foto inicio
@@ -47,7 +48,7 @@ function Perfil(props){
     // fim postar foto    
     
     const imagemGet = async()=>{
-        if(!selectedImage){
+        if(!imageUrl){
           await axios.get(userUrl, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
@@ -81,17 +82,10 @@ function Perfil(props){
                     <div className="col">                        
                         <h2>Apelido: {usuarioData? usuarioData.login.nomelogin : null} </h2>
                     </div>
+                    
                     <div className="col">
                         <div className="foto">                            
-                            {/* {usuarioData? <img src={`data:image/png;base64,${usuarioData.fotoPerfil} `} /> : null} */}
                             {usuarioData? <img style={{ width: "95%", height: "85%", margin: "10px 5px" }} src={imageUrl} /> : null}
-
-                            {imageUrl && selectedImage && (
-                            <Box mt={2} textAlign="center">
-                                <div>Foto Perfil:</div>
-                                <img src={imageUrl} alt={imageUrl.name} height="100px" />
-                            </Box>
-                            )}
                         </div>
                     </div>
                 </div>                       
