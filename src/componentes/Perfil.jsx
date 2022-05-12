@@ -24,7 +24,12 @@ function Perfil(props){
         if (selectedImage) {
             setImageUrl(URL.createObjectURL(selectedImage));
         }
-      }, [selectedImage]);
+        if (usuarioData && (imageUrl == null)) {
+            console.log("esperou e carregou dados")
+            setImageUrl('data:image/jpeg;base64,' + usuarioData.fotoPerfil)
+        }
+        
+      }, [!usuarioData, imageUrl]);
     
 
     // codigo para postar foto inicio
@@ -55,8 +60,7 @@ function Perfil(props){
             //console.log(response.data);
             console.log('carrega foto');
             setUsuarioData(response.data);            
-
-            setImageUrl('data:image/jpeg;base64,' + usuarioData.fotoPerfil)
+           
           }).catch(error=> {
             console.log(error);
           })
