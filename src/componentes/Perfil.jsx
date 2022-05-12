@@ -14,7 +14,6 @@ function Perfil(props){
     const baseUrl ="http://localhost:3033/postaFt";
     const baseUrlExterno ="http://45.191.187.35:3033/postaFt";
 
-    const location = useLocation();    
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
 
@@ -49,8 +48,15 @@ function Perfil(props){
             }
           })
           .then(response => {
+              
+            // Read the Blob as DataURL using the FileReader API
+            const reader = new FileReader();
+            
             console.log(response.data);
-            setUsuarioData(response.data);
+            setUsuarioData(response.data);  
+            selectedImage(reader.readAsBinaryString(usuarioData.fotoPerfil))
+           
+            setImageUrl('data:image/jpeg;base64,' + btoa(usuarioData.fotoPerfil))
           }).catch(error=> {
             console.log(error);
           })
@@ -66,13 +72,14 @@ function Perfil(props){
             <div className="container">  
                 <div className="row">
                     <div className="col-6">
-                        <h2>Nome: {usuarioData? usuarioData.nomeCompleto : null}  </h2>
+                        <h2>Nome Completo: {usuarioData? usuarioData.nomeCompleto : null}  </h2>
                     </div>
-                    <div className="col">                        <h2>Apelido: {usuarioData? usuarioData.descricao : null} </h2>
+                    <div className="col">                        
+                        <h2>Apelido: {usuarioData? usuarioData.login.nomelogin : null} </h2>
                     </div>
                     <div className="col">
-                        <div className="foto">
-                            {/* <h2>foto: {usuarioData? usuarioData.fotoPerfil : null} </h2> */}
+                        <div className="foto">                            
+                            {usuarioData? <img src={`data:image/png;base64,${usuarioData.fotoPerfil} `} /> : null}
 
                             {imageUrl && selectedImage && (
                             <Box mt={2} textAlign="center">
