@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { Component, useState, useEffect} from 'react';
 import './estilos/Perfil.css'
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -18,8 +18,9 @@ function Perfil(props){
     const [imageUrl, setImageUrl] = useState(null);
 
     var [usuarioData, setUsuarioData] = useState(null);
-
-    useEffect(() => {
+    
+    useEffect(() => {   
+        imagemGet();     
         if (selectedImage) {
             setImageUrl(URL.createObjectURL(selectedImage));
         }
@@ -38,8 +39,8 @@ function Perfil(props){
                     alert("Imagem salva com sucesso.")
             })
     };
-    // fim postar foto
-
+    // fim postar foto    
+    
     const imagemGet = async()=>{
         if(!selectedImage){
           await axios.get(userUrl, 
@@ -47,16 +48,15 @@ function Perfil(props){
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }
           })
-          .then(response => {
-              
+          .then(response => {              
             // Read the Blob as DataURL using the FileReader API
             const reader = new FileReader();
             
-            console.log(response.data);
-            setUsuarioData(response.data);  
-            selectedImage(reader.readAsBinaryString(usuarioData.fotoPerfil))
-           
-            setImageUrl('data:image/jpeg;base64,' + btoa(usuarioData.fotoPerfil))
+            //console.log(response.data);
+            console.log('carrega foto');
+            setUsuarioData(response.data);            
+
+            setImageUrl('data:image/jpeg;base64,' + usuarioData.fotoPerfil)
           }).catch(error=> {
             console.log(error);
           })
@@ -79,12 +79,13 @@ function Perfil(props){
                     </div>
                     <div className="col">
                         <div className="foto">                            
-                            {usuarioData? <img src={`data:image/png;base64,${usuarioData.fotoPerfil} `} /> : null}
+                            {/* {usuarioData? <img src={`data:image/png;base64,${usuarioData.fotoPerfil} `} /> : null} */}
+                            {usuarioData? <img style={{ width: "95%", height: "85%", margin: "10px 5px" }} src={imageUrl} /> : null}
 
                             {imageUrl && selectedImage && (
                             <Box mt={2} textAlign="center">
                                 <div>Foto Perfil:</div>
-                                <img src={imageUrl} alt={selectedImage.name} height="100px" />
+                                <img src={imageUrl} alt={imageUrl.name} height="100px" />
                             </Box>
                             )}
                         </div>
