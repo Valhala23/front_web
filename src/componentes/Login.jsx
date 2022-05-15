@@ -35,18 +35,17 @@ const Login = props => {
     async function usuarioPost(event) {
 
         try {
-            console.log('tentoulogar')
-
-                const datau = qs.stringify(usuariolog)
+            const datau = qs.stringify(usuariolog)
 
             await axios.post(url, datau)
             .then(async response => {
-                console.log(response.data)
                 
                 if(response.data){
                     localStorage.setItem('tokens', response.data.access_token)
+                    localStorage.setItem('login_usuario', response.data.login_usuario)
+                    
                     history.push({ pathname: '/Perfil',  usuario: usuariolog })
-                    console.log('salvo dados  ' + localStorage.getItem('tokens'))
+
                   }else{
                     console.log("error ao fazer login");    
                   }

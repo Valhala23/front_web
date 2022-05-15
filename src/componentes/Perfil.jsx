@@ -6,17 +6,19 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box';
 
 function Perfil(props){    
+    
+    const getUserUrl ="http://45.191.187.35:3033/getusuario/";
 
-    const userUrl ="http://localhost:3033/getusuario";
+    const userUrl ="http://45.191.187.35:3033/selusuario/";
     const baseUrl ="http://localhost:3033/postaFt";
     const baseUrlExterno ="http://45.191.187.35:3033/postaFt";
 
     const [imageUrl, setImageUrl] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
     
+    var loginToken = "";     
 
     var [usuarioData, setUsuarioData] = useState(null);
     
@@ -26,7 +28,7 @@ function Perfil(props){
             setImageUrl(URL.createObjectURL(selectedImage));
         }
         if (usuarioData && (imageUrl == null)) {
-            console.log("esperou e carregou dados")
+            //console.log("esperou e carregou dados")
             setImageUrl('data:image/jpeg;base64,' + usuarioData.fotoPerfil)
         }
         
@@ -47,24 +49,24 @@ function Perfil(props){
     };
     // fim postar foto    
     
-    const imagemGet = async()=>{
+    const imagemGet = async()=>{        
         if(!imageUrl){
-          await axios.get(userUrl, 
-            { headers: {          
-                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
-            }
-          })
-          .then(response => {              
-            // Read the Blob as DataURL using the FileReader API
-            const reader = new FileReader();
+            loginToken = localStorage.getItem('login_usuario').toString()
             
+            await axios.post(userUrl, loginToken, 
+            {          
+                headers: {          
+                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
+                }
+            }
+            )
+            .then(response => {                          
             //console.log(response.data);
-            console.log('carrega foto');
             setUsuarioData(response.data);            
-           
-          }).catch(error=> {
+            
+            }).catch(error=> {
             console.log(error);
-          })
+            })
         }
     }
 
@@ -91,6 +93,12 @@ function Perfil(props){
                 </div>                       
               
                 <div className="informacoes">
+                <div className="row">
+                        <div className="col">
+                            <h2>Descrição: {usuarioData? usuarioData.descricao : null} </h2>
+                        </div>
+                    </div>
+
                     <div className="row">
                         <div className="col">
                             <h2>Bio: {usuarioData? usuarioData.bio : null} </h2>
@@ -98,76 +106,36 @@ function Perfil(props){
                     </div>
                     <div className="row">
                         <div className="col">
-                            <h2>Descrição: {usuarioData? usuarioData.descricao : null} </h2>
+                            <h2>Observações: {usuarioData? usuarioData.observacao : null} </h2>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col">
-                            {/* <h2>sexo: {location.usuario.sexo} </h2> */}
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            {/* <h2>historico: {location.usuario.historico} </h2> */}
-                        </div>
-                    </div>                
-                    <div className="row">
-                        <div className="col">
-                            <div className="contato">
-                                {/* <h2>contato: {location.usuario.contato} </h2> */}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <div className="nivel">
-                                {/* <h2>permissao: {location.usuario.permissao} </h2> */}
-                            </div>
-                        </div>
-                        <div className="col">
 
-                            <input
-                                accept="image/*"
-                                type="file"
-                                id="select-image"
-                                style={{ display: 'none' }}
-                                onChange={e => setSelectedImage(e.target.files[0])}
-                            />
-                            <label htmlFor="select-image">
-                                <Button variant="contained" size='small' color="secondary" component="span">
-                                    Buscar foto
-                                </Button>
-                            </label>
-                        </div>
-                        <div className="col">
-                            {/* <button onClick={enviarDados}>Postar foto</button> */}
-                            <button onClick={postarFoto} >
-                                Postar foto
-                            </button>
-                        </div>
-                    </div>
                 </div>
                 <div className="row">
                     <div className="col">
-                        <h2>Token: </h2>
-                        {/* <h2>Token: {console.log(localStorage.getItem('token'))} </h2> */}
-                    </div>
-                    {/* <div className="col">
-                        <Link                         
-                            to={{ pathname: "/EditarPerfil",  state:{usuario: location.usuario}}} className="btn btn-light" >Editar</Link>
-                    </div> */}
-                
-                    <div className="col">
-                        {/* <button onClick={enviarDados}>Postar foto</button> */}
-                        <button onClick={imagemGet} >
-                            Mostrar foto
+                        <input
+                            accept="image/*"
+                            type="file"
+                            id="select-image"
+                            style={{ display: 'none' }}
+                            onChange={e => setSelectedImage(e.target.files[0])}
+                        />
+                        <label htmlFor="select-image">
+                            <Button variant="contained" size='small' color="secondary" component="span">
+                                Buscar foto
+                            </Button>
+                        </label>
+                        </div>
+                        <div className="col">
+                        <button onClick={postarFoto} >
+                            Postar foto
                         </button>
                     </div>
                 </div>
                 <div className="row">
                     <section className="link">
                     <NavLink to="/" activeClassName="active">
-                            Go Back
+                            Voltar
                     </NavLink>
                     </section>
                 </div>
