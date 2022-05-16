@@ -1,8 +1,6 @@
 import React, { Component, useState, useEffect} from 'react';
 import './estilos/Perfil.css'
 import { NavLink } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
@@ -12,7 +10,7 @@ function Perfil(props){
     const getUserUrl ="http://45.191.187.35:3033/getusuario/";
 
     const userUrl ="http://45.191.187.35:3033/selusuario/";
-    const baseUrl ="http://localhost:3033/postaFt";
+    const baseUrl ="http://localhost:3033/userPostaFt";
     const baseUrlExterno ="http://45.191.187.35:3033/postaFt";
 
     const [imageUrl, setImageUrl] = useState(null);
@@ -40,9 +38,15 @@ function Perfil(props){
         if (!selectedImage) {
             return
         }
+
         const formData = new FormData();
-        formData.append('image', selectedImage);
-        axios.post(baseUrl,formData)
+        formData.append('image', selectedImage,
+            {          
+                headers: {          
+                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
+                }
+            });
+        axios.post(baseUrlExterno, formData)
             .then(res => {
                     alert("Imagem salva com sucesso.")
             })

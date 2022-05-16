@@ -37,7 +37,7 @@ const Login = props => {
         try {
             const datau = qs.stringify(usuariolog)
 
-            await axios.post(url, datau)
+            await axios.post(urlex, datau)
             .then(async response => {
                 
                 if(response.data){
