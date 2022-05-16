@@ -39,7 +39,7 @@ const Login = props => {
 
             await axios.post(urlex, datau)
             .then(async response => {
-                
+                console.log(response.data)
                 if(response.data){
                     localStorage.setItem('tokens', response.data.access_token)
                     localStorage.setItem('login_usuario', response.data.login_usuario)

@@ -40,13 +40,13 @@ function Perfil(props){
         }
 
         const formData = new FormData();
-        formData.append('image', selectedImage,
+        formData.append('image', selectedImage);
+        axios.post(baseUrlExterno, formData,
             {          
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
                 }
-            });
-        axios.post(baseUrlExterno, formData)
+            })
             .then(res => {
                     alert("Imagem salva com sucesso.")
             })
