@@ -55,9 +55,8 @@ function Perfil(props){
     
     const imagemGet = async()=>{        
         if(!imageUrl){
-            loginToken = localStorage.getItem('login_usuario').toString()
             
-            await axios.post(userUrl, loginToken, 
+            await axios.get(userUrl, 
             {          
                 headers: {          
                     Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            

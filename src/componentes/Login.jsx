@@ -41,15 +41,11 @@ const Login = props => {
             .then(async response => {
                 console.log(response.data)
                 if(response.data){
-                    localStorage.setItem('tokens', response.data.access_token)
-                    localStorage.setItem('login_usuario', response.data.login_usuario)
-                    
+                    localStorage.setItem('tokens', response.data.access_token)                    
                     history.push({ pathname: '/Perfil',  usuario: usuariolog })
-
                   }else{
                     console.log("error ao fazer login");    
                   }
-
             }).catch(error=> {
               console.log(error);
             })            
