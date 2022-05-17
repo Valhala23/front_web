@@ -35,7 +35,7 @@ function Perfil(props){
     // Update the document title using the browser API
     //document.title = `You clicked ${count} times`;
 
-    usuariolog = location.state.usuario
+    // usuariolog = location.state.usuario
   }, []);
 
     const editarUsuario = async()=>{
@@ -55,7 +55,7 @@ function Perfil(props){
       } 
 
     
-    const location = useLocation();      
+    // const location = useLocation();      
 
     return(
         <div>
@@ -68,17 +68,17 @@ function Perfil(props){
                     <div className="col-6">
                         <h2>Nome: </h2>
                         {/* onChange={handleChange} */}
-                        <input type="text" value={location.state.usuario.nome} name="nome"  />
+                        <input type="text" name="nome"  />
                     </div>
                     <div className="col">
                         <h2>Apelido: </h2>
                         {/* onChange={handleChange} */}
-                        <input type="text" value={location.state.usuario.apelidoLogin} name="nome"  />
+                        <input type="text" name="nome"  />
                     </div>
                     <div className="col">
                         <div className="foto">
-                            <h2>foto: {location.state.usuario.foto} </h2>
-                            {/* <img className="playerProfilePic_home_tile"  src={picture && picture}></img> */}
+                            <h2>foto: {} </h2>
+                            <img className="playerProfilePic_home_tile"></img>
                         </div>
                     </div>
                 </div>                       
@@ -86,48 +86,48 @@ function Perfil(props){
                 <div className="informacoes">
                     <div className="row">
                         <div className="col">
-                            <h2>Bio: {location.state.usuario.bio} </h2>
+                            <h2>Bio:  </h2>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
-                            <h2>Descrição: {location.state.usuario.descricao} </h2>
+                            <h2>Descrição:  </h2>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
-                            <h2>sexo: {location.state.usuario.sexo} </h2>
+                            <h2>sexo:  </h2>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
-                            <h2>historico: {location.state.usuario.historico} </h2>
+                            <h2>historico:  </h2>
                         </div>
                     </div>                
                     <div className="row">
                         <div className="col">
                             <div className="contato">
-                                <h2>contato: {location.state.usuario.contato} </h2>
+                                <h2>contato:  </h2>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
                             <div className="nivel">
-                                <h2>permissao: {location.state.usuario.permissao} </h2>
+                                <h2>permissao:  </h2>
                             </div>
                         </div>
                         <div className="col">
                             {/* <input id="profilePic" type="file" onChange={onChangePicture}/> */}
                         </div>
                         <div className="col">
-                            {/* <button onClick={enviarDados}>Postar foto</button> */}
+                            <button onClick >Postar foto</button>
                         </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col">
-                        <h2>Token: {console.log(localStorage.getItem('token'))} </h2>
+                        Usuário
                     </div>
                     <div className="col">
                         <button >Editar</button>

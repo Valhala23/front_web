@@ -3,10 +3,11 @@ import './estilos/Perfil.css'
 import { NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import { useHistory } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 
 function Perfil(props){    
-    
+    const history = useHistory();  
     const getUserUrl ="http://45.191.187.35:3033/getusuario/";
 
     const userUrl ="http://45.191.187.35:3033/selusuario/";
@@ -65,7 +66,13 @@ function Perfil(props){
             )
             .then(response => {                          
             //console.log(response.data);
-            setUsuarioData(response.data);            
+            if (response.data.login != null){
+                console.log('existia usuario '+response.data);
+                setUsuarioData(response.data);            
+            }else{
+                alert("Não existe usuário cadastrado para este login.")
+                history.push({ pathname: '/EditarPerfil' })
+            }
             
             }).catch(error=> {
             console.log(error);
