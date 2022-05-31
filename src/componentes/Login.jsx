@@ -44,13 +44,15 @@ const Login = props => {
                     localStorage.setItem('tokens', response.data.access_token)                    
                     history.push({ pathname: '/Perfil',  usuario: usuariolog })
                   }else{
-                    console.log("error ao fazer login");    
+                    alert("Login não encontrado.")
+                    console.log("error ao fazer login");                        
                   }
             }).catch(error=> {
               console.log(error);
             })            
         } catch (error) {
-            console.log(error);
+            console.log('catch erro '+error);
+            alert("Login não encontrado.")
         }
       }  
     return(        

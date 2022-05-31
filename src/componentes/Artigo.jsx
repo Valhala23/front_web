@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import './estilos/Esp32.scss';
 
 function Artigo(){
     const permit = localStorage.getItem('tokens') == null

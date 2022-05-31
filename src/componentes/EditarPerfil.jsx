@@ -30,14 +30,6 @@ function Perfil(props){
         });        
     }
 
-  // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
-    // Update the document title using the browser API
-    //document.title = `You clicked ${count} times`;
-
-    // usuariolog = location.state.usuario
-  }, []);
-
     const editarUsuario = async()=>{
         // com o objeto usuario recebido pegar id e enviar para o metodo update                
         // location.state.state.usuario.id
@@ -62,85 +54,94 @@ function Perfil(props){
             <div className="cabecalho">
                 <h1>Perfil usuário </h1>
             </div>
+            <div className="container">
+                <form action="/salvausuario" method="post">
 
-            <div className="container">  
-                <div className="row">
-                    <div className="col-6">
-                        <h2>Nome: </h2>
-                        {/* onChange={handleChange} */}
-                        <input type="text" name="nome"  />
-                    </div>
-                    <div className="col">
-                        <h2>Apelido: </h2>
-                        {/* onChange={handleChange} */}
-                        <input type="text" name="nome"  />
-                    </div>
-                    <div className="col">
-                        <div className="foto">
-                            <h2>foto: {} </h2>
-                            <img className="playerProfilePic_home_tile"></img>
-                        </div>
-                    </div>
-                </div>                       
-              
-                <div className="informacoes">
+
                     <div className="row">
-                        <div className="col">
-                            <h2>Bio:  </h2>
+                        <div className="col-md-6">
+                            <h2>Nome: </h2>
+                            {/* onChange={handleChange} */}
+                            <input type="text" name="nomeCompleto"  />
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <h2>Descrição:  </h2>
+                        <div className="col-md-6">
+                            <h2>Apelido: </h2>
+                            {/* onChange={handleChange} */}
+                            <input type="text" name="nome"  />
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <h2>sexo:  </h2>
+                    </div>                       
+                
+                    <div className="informacoes">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <h2>Bio:  </h2>
+                                <input type="text" name="bio"  />
+                            </div>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <h2>historico:  </h2>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <h2>Descrição:  </h2>
+                                <input type="text" name="descricao"  />
+                            </div>
                         </div>
-                    </div>                
-                    <div className="row">
-                        <div className="col">
-                            <div className="contato">
-                                <h2>contato:  </h2>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <h2>Curso:  </h2>
+                                <input type="text" name="curso"  />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <h2>Observação:  </h2>
+                                <input type="text" name="observacao"  />
+                            </div>
+                        </div>                
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="contato">
+                                    <h2>contato:  </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="nivel">
+                                    <h2>Grau:  </h2>
+                                    <input type="text" name="grau"  />
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
-                            <div className="nivel">
-                                <h2>permissao:  </h2>
+                            <div className="foto">
+                                <h2>foto: {} </h2>
+                                <img className="playerProfilePic_home_tile"></img>
                             </div>
                         </div>
-                        <div className="col">
-                            {/* <input id="profilePic" type="file" onChange={onChangePicture}/> */}
+                    </div>
+                    <div className="row">
+                        <div className="col-md-2">
+                            <button onClick >Buscar foto</button>
                         </div>
-                        <div className="col">
+                        <div className="col-md-2">
                             <button onClick >Postar foto</button>
                         </div>
                     </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                        Usuário
+                    <div className="row">
+                        <div className="col">
+                            <button type='submit' >Salvar</button>
+                        </div>
                     </div>
-                    <div className="col">
-                        <button >Editar</button>
+                    <div className="row">
+                        <section className="link">
+                        <NavLink to="/" activeClassName="active">
+                                Go Back
+                        </NavLink>
+                        </section>
                     </div>
-                </div>
-                <div className="row">
-                    <section className="link">
-                    <NavLink to="/" activeClassName="active">
-                            Go Back
-                    </NavLink>
-                    </section>
-                </div>
-            </div>
+                </form>  
+            </div>            
         </div>
     );    
 }
