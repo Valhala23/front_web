@@ -1,7 +1,8 @@
 .publica {
     display: flex;
     flex-direction: column;
-    background-color: rgb(245, 138, 138);
+    /* background-color: rgb(245, 138, 138); */
+    background-color: #354259;
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 1%;
@@ -12,7 +13,7 @@
     display: block;
     height: 95%;
     width: 90%;    
-    background-color: rgb(103, 118, 132);
+    background-color: #B1B1B1;
     border: 3px solida white;
     margin-top: 2%;    
     margin-left: 5%;
