@@ -81,7 +81,7 @@ function Perfil(props){
     }
 
     return(
-        <div>
+        <div className='perfil'>
             <div className="cabecalho">
                 <h1>Perfil usuário </h1>
             </div>
