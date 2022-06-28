@@ -1,12 +1,14 @@
 import React, { Component, useState, useEffect} from 'react';
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import './estilos/Perfil.css'
+import './estilos/EditarPerfil.css'
 import { NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import api from '../servicos/api'
-import fotoPerfilPadrao from '../assets/fotoPadrao.png'
+
 function Perfil(props){    
+    const [imageUrl, setImageUrl] = useState(null);
+    const [selectedImage, setSelectedImage] = useState(null);
 
     const history = useHistory();
     var [usuariolog, setUsuariolog]=useState(
@@ -57,64 +59,64 @@ function Perfil(props){
             <div className="container">
                 <form action="/salvausuario" method="post">
 
-
-                    <div className="row">
-                        <div className="col-md-6">
-                            <h2>Nome: </h2>
-                            {/* onChange={handleChange} */}
-                            <input type="text" name="nomeCompleto"  />
-                        </div>
-                        <div className="col-md-6">
-                            <h2>Apelido: </h2>
-                            {/* onChange={handleChange} */}
-                            <input type="text" name="nome"  />
-                        </div>
-                    </div>                       
-                
                     <div className="informacoes">
                         <div className="row">
                             <div className="col-md-6">
-                                <h2>Bio:  </h2>
-                                <input type="text" name="bio"  />
+                                <h2>Nome: </h2>
+                                <input type="text" name="nomeCompleto"  />
                             </div>
-                        </div>
-                        <div className="row">
                             <div className="col-md-6">
-                                <h2>Descrição:  </h2>
-                                <input type="text" name="descricao"  />
+                                <h2>Apelido: </h2>
+                                <input type="text" name="nome"  />
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-6">
-                                <h2>Curso:  </h2>
-                                <input type="text" name="curso"  />
+                        </div>                    
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <h2>Bio:  </h2>
+                                    <input type="text" name="bio"  />
+                                </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-6">
-                                <h2>Observação:  </h2>
-                                <input type="text" name="observacao"  />
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <h2>Descrição:  </h2>
+                                    <input type="text" name="descricao"  />
+                                </div>
                             </div>
-                        </div>                
-                        <div className="row">
-                            <div className="col-md-6">
-                                <div className="contato">
-                                    <h2>contato:  </h2>
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <h2>Curso:  </h2>
+                                    <select style={{marginLeft: "50px"}}>
+                                        <option value="">Selecione o curso </option>
+                                        <option value="comp">Eng. Computação </option>
+                                        <option value="elet">Eng. Eletrica </option>
+                                        <option value="prod">Eng. Produção </option>
+                                        <option value="meca">Eng. Mecanica </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <h2>Observação:  </h2>
+                                    <input type="text" name="observacao"  />
+                                </div>
+                            </div>                
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="contato">
+                                        <h2>contato: </h2>
+                                        <input type="text" name="grau"  />
+                                    </div>
+                                </div>
+                                <div className="col">
+                                    <button type='submit' >Salvar</button>
                                 </div>
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="col-md-6">
-                                <div className="nivel">
-                                    <h2>Grau:  </h2>
-                                    <input type="text" name="grau"  />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>  
+
                     <div className="row">
                         <div className="col">
-                            <div className="foto">
+                            <div className="foto" style={{marginLeft: '80%'}}>
                                 <h2>foto: {} </h2>
                                 <img className="playerProfilePic_home_tile"></img>
                             </div>
@@ -122,15 +124,12 @@ function Perfil(props){
                     </div>
                     <div className="row">
                         <div className="col-md-2">
-                            <button onClick >Buscar foto</button>
+                            <button variant="contained" size='small' color="secondary" component="span">
+                                Buscar foto
+                            </button>
                         </div>
                         <div className="col-md-2">
                             <button onClick >Postar foto</button>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <button type='submit' >Salvar</button>
                         </div>
                     </div>
                     <div className="row">
@@ -140,7 +139,7 @@ function Perfil(props){
                         </NavLink>
                         </section>
                     </div>
-                </form>  
+                
             </div>            
         </div>
     );    
