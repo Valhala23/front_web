@@ -5,12 +5,20 @@ import './estilos/EditarPerfil.css'
 import { NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import api from '../servicos/api'
+import Button from '@material-ui/core/Button';
 
 function Perfil(props){ 
     const baseUrl ="http://localhost:3033/salvausuario";
     const baseUrlExterno ="http://45.191.187.35:3033/salvausuario";
-    const history = useHistory();
-    
+    const [selectedImage, setSelectedImage] = useState(null); 
+    const history = useHistory();        
+    const [imageUrl, setImageUrl] = useState(null);
+    useEffect(() => {   
+        if (selectedImage) {
+            setImageUrl(URL.createObjectURL(selectedImage));
+        }
+        
+      }, [selectedImage]);
     // Modelo do usuario a ser salvo
     const [usuariolog, setUsuariolog]=useState(
         {
@@ -57,7 +65,27 @@ function Perfil(props){
         } catch (error) {
             console.log(error);
         }
-      }      
+      }   
+      
+          // codigo para postar foto inicio
+    function postarFoto () {
+        if (!selectedImage) {
+            return
+        }
+
+        const formData = new FormData();
+        formData.append('image', selectedImage);
+        api.post(baseUrlExterno, formData,
+            {          
+                headers: {          
+                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
+                }
+            })
+            .then(res => {
+                    alert("Imagem salva com sucesso.")
+            })
+    };
+    // fim postar foto  
 
     return(
         <div>
@@ -119,23 +147,22 @@ function Perfil(props){
                             </div>
                         </div>
                     </div>
+                </div>
 
+                <div className='container'>
                     <div className="row">
                         <div className="col">
-                            <div className="foto" style={{marginLeft: '80%'}}>
-                                <h2>foto: {} </h2>
-                                <img className="playerProfilePic_home_tile"></img>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-2">
-                            <button variant="contained" size='small' color="secondary" component="span">
-                                Buscar foto
-                            </button>
-                        </div>
-                        <div className="col-md-2">
-                            <button onClick >Postar foto</button>
+                            <input
+                                accept="image/*"
+                                type="file"
+                                id="select-image"
+                                style={{ display: 'none' }}
+                                onChange={e => setSelectedImage(e.target.files[0])}/>
+                            <label htmlFor="select-image">
+                                <Button variant="contained" size='small' color="secondary" component="span">
+                                    Buscar foto
+                                </Button>
+                            </label>                                                        
                         </div>
                     </div>
                     <div className="row">
@@ -144,8 +171,11 @@ function Perfil(props){
                                 Go Back
                         </NavLink>
                         </section>
-                    </div>
-                
+                    </div>  
+                    <div className="foto" style={
+                        { display: 'flex', marginLeft: '75%', marginTop: '-65%'}}>
+                        {selectedImage? <img style={{ width: "90%", height: "85%", margin: "10px" }} src={imageUrl} /> : null}
+                    </div>              
             </div>            
         </div>
     );    

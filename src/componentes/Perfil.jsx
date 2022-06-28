@@ -8,17 +8,14 @@ import Button from '@material-ui/core/Button';
 
 function Perfil(props){    
     const history = useHistory();  
-    const getUserUrl ="http://45.191.187.35:3033/getusuario/";
 
+    const getUserUrl ="http://45.191.187.35:3033/getusuario/";
     const userUrl ="http://45.191.187.35:3033/selusuario/";
     const baseUrl ="http://localhost:3033/userPostaFt";
     const baseUrlExterno ="http://45.191.187.35:3033/postaFt";
 
     const [imageUrl, setImageUrl] = useState(null);
-    const [selectedImage, setSelectedImage] = useState(null);
-    
-    var loginToken = "";     
-
+    const [selectedImage, setSelectedImage] = useState(null);    
     var [usuarioData, setUsuarioData] = useState(null);
     
     useEffect(() => {   
@@ -55,8 +52,7 @@ function Perfil(props){
     // fim postar foto    
     
     const imagemGet = async()=>{        
-        if(!imageUrl){
-            
+        if(!imageUrl){            
             await axios.get(userUrl, 
             {          
                 headers: {          
