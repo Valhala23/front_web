@@ -16,6 +16,7 @@ function Perfil(props){
     useEffect(() => {   
         if (selectedImage) {
             setImageUrl(URL.createObjectURL(selectedImage));
+            usuariolog.fotoPerfil = imageUrl
         }
         
       }, [selectedImage]);
@@ -128,6 +129,19 @@ function Perfil(props){
                                     <option value="meca">Eng. Mecanica </option>
                                 </select>
                             </div>
+                            <div className="col" style={{marginLeft: '25%'}}>
+                                <input
+                                    accept="image/*"
+                                    type="file"
+                                    id="select-image"
+                                    style={{ display: 'none' }}
+                                    onChange={e => setSelectedImage(e.target.files[0])}/>
+                                <label htmlFor="select-image">
+                                    <Button variant="contained" size='small' color="secondary" component="span">
+                                        Buscar foto
+                                    </Button>
+                                </label>                                                        
+                            </div>
                         </div>
                         <div className="row">
                             <div className="col-md-6">
@@ -147,35 +161,12 @@ function Perfil(props){
                             </div>
                         </div>
                     </div>
-                </div>
-
                 <div className='container'>
-                    <div className="row">
-                        <div className="col">
-                            <input
-                                accept="image/*"
-                                type="file"
-                                id="select-image"
-                                style={{ display: 'none' }}
-                                onChange={e => setSelectedImage(e.target.files[0])}/>
-                            <label htmlFor="select-image">
-                                <Button variant="contained" size='small' color="secondary" component="span">
-                                    Buscar foto
-                                </Button>
-                            </label>                                                        
-                        </div>
-                    </div>
-                    <div className="row">
-                        <section className="link">
-                        <NavLink to="/" activeClassName="active">
-                                Go Back
-                        </NavLink>
-                        </section>
-                    </div>  
-                    <div className="foto" style={
-                        { display: 'flex', marginLeft: '75%', marginTop: '-65%'}}>
-                        {selectedImage? <img style={{ width: "90%", height: "85%", margin: "10px" }} src={imageUrl} /> : null}
-                    </div>              
+                        <div className="foto" style={
+                            { display: 'flex', marginLeft: '75%', marginTop: '-35%'}}>
+                            {selectedImage? <img style={{ width: "90%", height: "85%", margin: "10px" }} src={imageUrl} /> : null}
+                        </div>       
+                </div>       
             </div>            
         </div>
     );    
