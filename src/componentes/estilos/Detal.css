@@ -1,5 +1,7 @@
-.container {
-
+.btn-fim-editar button {
+    margin-left: 80%;
+    background-color: rgb(142, 187, 187);
+    color: rgb(59, 61, 63);
 }
 .cabecalho {    
     display: inline-flex;

@@ -68,11 +68,13 @@ function Detalhe(){
                     <div className="col">
                         <p>comentarios ao lado </p>
                     </div>
-                </div>
-                
+                </div>               
 
             </div>
-
+        
+            <div className="btn-fim-editar">
+                <button type="button" class="btn btn-secondary">Editar esta publicação</button>
+            </div>
         </div>
     );    
 }
