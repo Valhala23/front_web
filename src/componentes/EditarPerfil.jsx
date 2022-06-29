@@ -1,22 +1,22 @@
-import React, { Component, useState, useEffect} from 'react';
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect} from 'react';
 import { useHistory } from "react-router-dom";
 import './estilos/EditarPerfil.css'
-import { NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import api from '../servicos/api'
 import Button from '@material-ui/core/Button';
 
-function Perfil(props){ 
+function Perfil(){ 
     const baseUrl ="http://localhost:3033/salvausuario";
     const baseUrlExterno ="http://45.191.187.35:3033/salvausuario";
+    const baseUrlExternoft ="http://45.191.187.35:3033/postaFt";
     const [selectedImage, setSelectedImage] = useState(null); 
     const history = useHistory();        
     const [imageUrl, setImageUrl] = useState(null);
+
+    const formData = new FormData();    
     useEffect(() => {   
         if (selectedImage) {
-            setImageUrl(URL.createObjectURL(selectedImage));
-            usuariolog.fotoPerfil = imageUrl
+            setImageUrl(URL.createObjectURL(selectedImage));                        
         }
         
       }, [selectedImage]);
@@ -29,8 +29,7 @@ function Perfil(props){
           curso: '',
           descricao: '',
           observacao: '',
-          grau: '',
-          fotoPerfil: null
+          grau: ''
         }
     );  
     
@@ -44,6 +43,26 @@ function Perfil(props){
             [name]: value
         });        
     }  
+
+        // codigo para postar foto inicio
+        function postarFoto () {
+            if (!selectedImage) {
+                return
+            }
+    
+            const formData = new FormData();
+            formData.append('image', selectedImage);
+            api.post(baseUrlExternoft, formData,
+                {          
+                    headers: {          
+                        Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
+                    }
+                })
+                .then(res => {
+                        alert("Imagem salva com sucesso.")
+                })
+        };
+        // fim postar foto  
     
     async function usuarioEdita(){                
 
@@ -54,8 +73,8 @@ function Perfil(props){
                 }
                 })        
             .then(async response => {
-              // setData(response.data);
               if(response.data){
+                postarFoto();
                 history.push('/');
               }else{
                 console.log("error ao cadastrar usuario");    
@@ -66,27 +85,8 @@ function Perfil(props){
         } catch (error) {
             console.log(error);
         }
-      }   
+    }   
       
-          // codigo para postar foto inicio
-    function postarFoto () {
-        if (!selectedImage) {
-            return
-        }
-
-        const formData = new FormData();
-        formData.append('image', selectedImage);
-        api.post(baseUrlExterno, formData,
-            {          
-                headers: {          
-                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
-                }
-            })
-            .then(res => {
-                    alert("Imagem salva com sucesso.")
-            })
-    };
-    // fim postar foto  
 
     return(
         <div>
@@ -121,7 +121,7 @@ function Perfil(props){
                         <div className="row">
                             <div className="col-md-6">
                                 <h2>Curso:  </h2>
-                                <select style={{marginLeft: "50px"}} onChange={handleChange}>
+                                <select style={{marginLeft: "50px"}} name='curso' onChange={handleChange}>
                                     <option value="">Selecione o curso </option>
                                     <option value="comp">Eng. Computação </option>
                                     <option value="elet">Eng. Eletrica </option>
