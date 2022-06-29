@@ -1,5 +1,11 @@
-.btn-fim-editar button {
-    margin-left: 80%;
+.btn-fim-editar {
+    position: absolute;
+    bottom: 10%;
+    right: 10px;
+    margin-top: 5%;
+}
+
+.btn-fim-editar button {    
     background-color: rgb(142, 187, 187);
     color: rgb(59, 61, 63);
 }

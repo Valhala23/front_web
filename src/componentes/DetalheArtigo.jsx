@@ -24,58 +24,82 @@ function Detalhe(){
       })    
       return(
         <div>
-            <div className="container">
-                <div className="row">
-                    <div className="col">
-                        <h1> Detalhe do artigo </h1>
+            <section>
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                        <h1> Detalhe do artigo Cabecalho </h1>
+                        </div>
                     </div>
+                </div>                
+            </section>
+            <section>
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <h1> Conteúdo </h1>
+                        </div>
+                    </div>
+                    <div className="row">                     
+                        {data.map(artigo=> (
+                            <tr key={artigo.codigo}>
+                                <td> {artigo.codigo }</td>
+                                <td> {artigo.titulo }</td>
+                                <td> {artigo.descricao }</td>
+                            </tr>       
+                        ))}                                                                  
+                    </div>
+                    
+                    <div className="row">
+                        <div className="col">
+                        <div className="col">
+                            <div className="informacoes" style={{height: '250px'}}>
+                                <h3>Imagem 1 </h3>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div className="col">
+                            <p>comentarios ao lado </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div className="col">
+                            <div className="informacoes" style={{height: '200px'}}>
+                                <h3>Imagem 2 </h3>
+                                </div>
+                        </div>
+
+                        <div className="col">
+                            <p>comentarios ao lado </p>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col">
+                        <div className="col">
+                            <div className="informacoes" style={{height: '150px'}}>
+                                <h3>Imagem 3 </h3>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div className="col">
+                            <p>comentarios ao lado </p>
+                        </div>
+                    </div>             
                 </div>
-                <div className="row">                     
-                    {data.map(artigo=> (
-                        <tr key={artigo.codigo}>
-                            <td> {artigo.codigo }</td>
-                            <td> {artigo.titulo }</td>
-                            <td> {artigo.descricao }</td>
-                        </tr>       
-                    ))}                                                                  
-                </div>
-                
-                <div className="row">
-                    <div className="col">
-                        <h1>Imagem 1 </h1>
-                    </div>
-
-                    <div className="col">
-                        <p>comentarios ao lado </p>
-                    </div>
-                </div>
-
-                <div className="row">
-                    <div className="col">
-                        <h3>Imagem 2 </h3>
-                    </div>
-
-                    <div className="col">
-                        <p>comentarios ao lado </p>
-                    </div>
-                </div>
-
-                <div className="row">
-                    <div className="col">
-                        <h3>Imagem 3 </h3>
-                    </div>
-
-                    <div className="col">
-                        <p>comentarios ao lado </p>
-                    </div>
-                </div>               
-
-            </div>
+            </section>
         
-            <div className="btn-fim-editar">
-                <button type="button" class="btn btn-secondary">Editar esta publicação</button>
-            </div>
-        </div>
+            <section>
+                rodape
+                <div className="btn-fim-editar">
+                    <button type="button" class="btn btn-secondary">Editar esta publicação</button>
+                </div>
+            </section>
+            
+        </div>        
     );    
 }
 
