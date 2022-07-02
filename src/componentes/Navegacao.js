@@ -37,7 +37,7 @@ const Navegacao = () => {
                 <Route exact path="/"> <Login/>            </Route>
                 <Route path="/Login"> <Login/>             </Route>
                 <Route path="/Artigo"> <Artigo/>           </Route>
-                <Route path="/DetalheArtigo"> <Detalhe/>   </Route>
+                <Route exact path="/DetalheArtigo/:id"> <Detalhe/>   </Route>
                 <Route path="/Publicar"> <Publicar/>       </Route>
                 <Route path="/Perfil"> <Perfil/>           </Route>
                 <Route path="/CadLogin"> <CadastroLogin/>  </Route>
