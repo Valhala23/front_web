@@ -15,7 +15,7 @@ function Perfil(props){
     const baseUrlExterno ="http://45.191.187.35:3033/postaFt";
 
     const [imageUrl, setImageUrl] = useState(null);
-    const [selectedImage, setSelectedImage] = useState(null);    
+    const [selectedImage, setSelectedImage] = useState(null);
     var [usuarioData, setUsuarioData] = useState(null);
     
     useEffect(() => {   

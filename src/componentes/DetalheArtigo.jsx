@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
@@ -9,6 +10,7 @@ function Detalhe(){
     const baseUrl ="http://localhost:3033/artigodettalhe";
     const baseUrlExterno ="http://45.191.187.35:3033/artigodettalhe";
     const [data, setData]=useState([]);
+    const { id } = useParams()
 
     const detalhrGet = async()=>{
       await axios.get(baseUrl)
@@ -37,7 +39,7 @@ function Detalhe(){
                 <div className="container">
                     <div className="row">
                         <div className="col">
-                            <h1> Conteúdo </h1>
+                            <h2> Conteúdo </h2>
                         </div>
                     </div>
                     <div className="row">                     
@@ -95,7 +97,7 @@ function Detalhe(){
             <section>
                 rodape
                 <div className="btn-fim-editar">
-                    <button type="button" class="btn btn-secondary">Editar esta publicação</button>
+                    <Link to={`/DetalheArtigoEditar/${id}`}  className="btn btn"> Editar esta publicação: {id}</Link>
                 </div>
             </section>
             

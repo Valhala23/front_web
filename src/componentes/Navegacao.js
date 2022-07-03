@@ -10,6 +10,7 @@ import './estilos/Navegacao.css'
 import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Detalhe from './DetalheArtigo';
+import EditarDetalhe from './DetalheArtigoEditar';
 
 const Navegacao = () => {
     return (
@@ -34,14 +35,15 @@ const Navegacao = () => {
             </nav>
 
             <Switch>
-                <Route exact path="/"> <Login/>            </Route>
-                <Route path="/Login"> <Login/>             </Route>
-                <Route path="/Artigo"> <Artigo/>           </Route>
-                <Route exact path="/DetalheArtigo/:id"> <Detalhe/>   </Route>
-                <Route path="/Publicar"> <Publicar/>       </Route>
-                <Route path="/Perfil"> <Perfil/>           </Route>
-                <Route path="/CadLogin"> <CadastroLogin/>  </Route>
-                <Route path="/PainelMestre"> <PainelMestre/>           </Route>
+                <Route exact path="/"> <Login/>                                         </Route>
+                <Route path="/Login"> <Login/>                                          </Route>
+                <Route path="/Artigo"> <Artigo/>                                        </Route>
+                <Route exact path="/DetalheArtigo/:id"> <Detalhe/>                      </Route>
+                <Route exact path="/DetalheArtigoEditar/:id"> <EditarDetalhe/>   </Route>
+                <Route path="/Publicar"> <Publicar/>                                    </Route>
+                <Route path="/Perfil"> <Perfil/>                                        </Route>
+                <Route path="/CadLogin"> <CadastroLogin/>                               </Route>
+                <Route path="/PainelMestre"> <PainelMestre/>                            </Route>
                 <Route path="/EditarPerfil" component={EditarPerfil} /> 
             </Switch>
         </div>
