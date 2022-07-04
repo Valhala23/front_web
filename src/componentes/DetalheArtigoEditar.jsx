@@ -69,6 +69,7 @@ function EditarDetalhe(){
     const artigoDetalhePost = async()=>{        
 
         try {
+            detalheArtigo.codArtigo = id;
             await axios.post(baseUrlArtigoExterno, detalheArtigo, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
