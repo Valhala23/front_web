@@ -30,7 +30,7 @@ function Publicar(){
         delete artigo.codigo;
 
         try {
-            await api.post('http://45.191.187.35:3033/salvarartigo', artigo, 
+            await api.post('http://45.191.187.35:3033/artigo/salvarartigo', artigo, 
             { headers: {          
                 Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
             }

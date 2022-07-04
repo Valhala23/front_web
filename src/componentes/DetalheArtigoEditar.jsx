@@ -6,22 +6,33 @@ import './estilos/Detal.css';
 import Button from '@material-ui/core/Button';
 
 function EditarDetalhe(){
+    const [detalheArtigo, setDetalheArtigo] =
+    useState(
+        {
+            titulo: '',
+            descricao: '',
+            codArtigo: 0
+        }
+    );
 
-    const baseUrl ="http://localhost:3033/artigodettalhe";
-    const baseUrlExterno ="http://45.191.187.35:3033/artigodettalhe";
+    const baseUrl ="http://localhost:3033/artigo/foto";
+    const baseUrlExterno ="http://45.191.187.35:3033/artigo/foto";
+    const baseUrlArtigoExterno ="http://45.191.187.35:3033/artigo/salvardetalhe";
     const [data, setData]=useState([]);
     const { id } = useParams()
 
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
 
-    const detalhrGet = async()=>{
-      await axios.get(baseUrl)
-      .then(response => {
-        setData(response.data);
-      }).catch(error=> {
-        console.log(error);
-      })
+    const handleChange = e=> 
+    {
+        // Montar objeto usuario
+        const {name, value}=e.target;
+        setDetalheArtigo(
+        {
+            ...detalheArtigo,
+            [name]: value
+        });        
     }
 
     useEffect(() => {   
@@ -36,20 +47,46 @@ function EditarDetalhe(){
         if (!selectedImage) {
             return;
         }
-
-        const formData = new FormData();
+        console.log("Imagem selecionada okei, tentando postar.. ")
+        let formData = new FormData();
+        formData.append('detalheArtigo', id);
         formData.append('image', selectedImage);
-        // axios.post(baseUrlExterno, formData,
-        //     {          
-        //         headers: {          
-        //             Authorization: 'Bearer ' + localStorage.getItem('tokens').toString()            
-        //         }
-        //     })
-        //     .then(res => {
-        //             alert("Imagem salva com sucesso.")
-        //     })
+
+        // Requisicao para postar imagem
+        axios.post(baseUrlExterno, formData,
+            {          
+                headers: {          
+                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString(),
+                    'Content-Type': 'multipart/form-data'            
+                }
+            })
+            .then(res => {
+                    alert("Imagem salva com sucesso.")
+            })
     };
-    // fim postar foto    
+    // fim postar foto
+
+    const artigoDetalhePost = async()=>{        
+
+        try {
+            await axios.post(baseUrlArtigoExterno, detalheArtigo, 
+            { headers: {          
+                Authorization: 'Bearer ' + localStorage.getItem('tokens').toString() 
+            }
+            })
+            // .then(async response => {
+            //   if(response.data){
+            //     history.push('/Artigo');
+            //   }else{
+            //     console.log("error ao publicar");    
+            //   }
+            // }).catch(error=> {
+            //   console.log(error);
+            // })            
+        } catch (error) {
+            console.log(error);
+        }
+      } 
 
       return(
         <div>
@@ -69,28 +106,27 @@ function EditarDetalhe(){
                             <h2> Conteúdo </h2>
                         </div>
                     </div>
-                    <div className="row">                     
-                        {data.map(artigo=> (
-                            <tr key={artigo.codigo}>
-                                <td> {artigo.codigo }</td>
-                                <td> {artigo.titulo }</td>
-                                <td> {artigo.descricao }</td>
-                            </tr>       
-                        ))}                                                                  
-                    </div>
-                    
+
                     <div className="row">
                         <div className="col">
                             <div className="informacoes" style={{height: '250px'}}>
                                 {selectedImage? <img style={{ width: "95%", height: "85%", margin: "10px 5px" }} src={imageUrl} /> : null}
                             </div>
                         </div>
-                        </div>
-
-                        <div className="col">
-                            <textarea style={{width: '100%'}} name="txtdetal" id="txtdetal" cols="30" rows="5"></textarea>
-                        </div>
                     </div>
+                    <div className="row">
+                        <div className="col">
+                            <label htmlFor="titulo">Título</label>
+                            <input type="text" name='titulo' style={{marginTop: "-2%"}} onChange={handleChange}/>
+                        </div>
+                    </div>                    
+                    <div className="row">
+                        <div className="col">
+                            <label htmlFor="descricao">Descrição</label>
+                            <textarea style={{width: '100%'}} name="descricao" onChange={handleChange} cols="30" rows="5"></textarea>
+                        </div>
+                    </div> 
+                </div>
                     <div className="imagem-detalhe">
                         <div className="row">
                         <input
@@ -107,7 +143,7 @@ function EditarDetalhe(){
                         </label>
                         </div>
                         <div className="row">
-                            <button onClick={postarFoto()} type="button" class="btn btn-secondary">Publicar imagem</button>
+                            <button onClick={postarFoto} type="button" class="btn btn-secondary">Publicar imagem</button>
                         </div>
 
                     </div>                    
@@ -117,7 +153,7 @@ function EditarDetalhe(){
             <section>
                 rodape
                 <div className="btn-fim-editar">
-                    <button onClick={console.log(id)} type="button" class="btn btn-secondary">Confirmar</button>
+                    <button onClick={artigoDetalhePost} type="button" class="btn btn-secondary">Confirmar</button>
                 </div>
             </section>
             

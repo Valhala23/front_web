@@ -5,8 +5,8 @@ import axios from 'axios';
 
 function Artigo(){
     const permit = localStorage.getItem('tokens') == null
-    const baseUrl ="http://localhost:3033/artigolista";
-    const baseUrlExterno ="http://45.191.187.35:3033/artigolista";
+    const baseUrl ="http://localhost:3033/artigo/artigolista";
+    const baseUrlExterno ="http://45.191.187.35:3033/artigo/artigolista";
     const [data, setData]=useState([]);
 
     const artigoGet = async()=>{
