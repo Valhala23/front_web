@@ -26,7 +26,7 @@ function Detalhe(){
         })
       .then(response => {
         // console.log("Dados recebidos: ");
-        // console.log(response.data);
+        console.log(response.data);
         setArtigos(response.data);
       }).catch(error=> {
         console.log(error);
@@ -35,12 +35,7 @@ function Detalhe(){
 
     useEffect(()=>{
         detalhrGet();
-
-        if (artigos && (imageUrl == null)) {
-            //console.log("esperou e carregou dados")
-            setImageUrl('data:image/jpeg;base64,' + artigos[0].fotoPublicacao )//+ artigos[].imagem)
-        }
-      })    
+      }, [])    
       return(
         <div>
             <section>
