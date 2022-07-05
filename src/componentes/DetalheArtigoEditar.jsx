@@ -18,7 +18,6 @@ function EditarDetalhe(){
     const baseUrl ="http://localhost:3033/artigo/foto";
     const baseUrlExterno ="http://45.191.187.35:3033/artigo/foto";
     const baseUrlArtigoExterno ="http://45.191.187.35:3033/artigo/salvardetalhe";
-    const [data, setData]=useState([]);
     const { id } = useParams()
 
     const [selectedImage, setSelectedImage] = useState(null);
