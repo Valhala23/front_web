@@ -26,7 +26,18 @@ function Detalhe(){
         })
       .then(response => {
         // console.log("Dados recebidos: ");
-        console.log(response.data);
+        
+        response.data.forEach(obj => {
+            Object.entries(obj).forEach(([key, value]) => {
+                if (key == 'fotoPublicacao'){
+                    console.log("foto aqui:");
+                    setImageUrl('data:image/jpeg;base64,' + value)    
+                }
+                console.log(`${key} ${value}`);
+            });
+            console.log('-------------------');
+        });
+
         setArtigos(response.data);
       }).catch(error=> {
         console.log(error);
@@ -34,8 +45,9 @@ function Detalhe(){
     }
 
     useEffect(()=>{
-        detalhrGet();
-      }, [])    
+        detalhrGet();        
+      }, [])
+
       return(
         <div>
             <section>
@@ -55,13 +67,13 @@ function Detalhe(){
                         </div>
                     </div>
                     <div className="row">
-                        {artigos.map(artigo=> (
+                        {/* {artigos.map(artigo=> (
                             <tr key= {artigo.codigo}>
                                 <td> {artigo.codigo }</td>
                                 <td> {artigo.titulo }</td>
                                 <td> {artigo.descricao }</td>
                             </tr>                                   
-                        ))}                        
+                        ))}                         */}
                     </div>
                     
                     <div className="row">
