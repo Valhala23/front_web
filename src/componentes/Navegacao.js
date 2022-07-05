@@ -1,16 +1,16 @@
 import React from 'react'
-import Login from './Login';
-import Artigo from './Artigo';
-import PainelMestre from './PainelMestre';
-import Publicar from './PublicarArtigo';
-import Perfil from './Perfil';
-import CadastroLogin from './CadastroLogin'
-import EditarPerfil from './EditarPerfil'
+import Login from './paginas/Login';
+import Artigo from './paginas/Artigo';
+import PainelMestre from './paginas/PainelMestre';
+import Publicar from './paginas/PublicarArtigo';
+import Perfil from './paginas/Perfil';
+import CadastroLogin from './paginas/CadastroLogin'
+import EditarPerfil from './paginas/EditarPerfil'
 import './estilos/Navegacao.css'
 import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Detalhe from './DetalheArtigo';
-import EditarDetalhe from './DetalheArtigoEditar';
+import Detalhe from './paginas/DetalheArtigo';
+import EditarDetalhe from './paginas/DetalheArtigoEditar';
 
 const Navegacao = () => {
     return (

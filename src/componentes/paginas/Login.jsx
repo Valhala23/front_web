@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
-import './estilos/Login.css';
+import '../estilos/Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logarimg from '../assets/academico.png';
+import logarimg from '../../assets/academico.png';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 import qs from 'qs';

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import './estilos/Detal.css';
+import '../estilos/Detal.css';
 
 function Detalhe(){
     
@@ -14,7 +14,7 @@ function Detalhe(){
     const formData = new FormData();
     formData.append('idArtigo', id);
     const [artigos, setArtigos]=useState([]);
-    const [imageUrl, setImageUrl] = useState(null);  
+    const [imageUrl, setImageUrl] = useState([]);  
     
     const detalhrGet = async()=>{
       await axios.post(baseUrl, formData,
@@ -38,7 +38,7 @@ function Detalhe(){
 
         if (artigos && (imageUrl == null)) {
             //console.log("esperou e carregou dados")
-            setImageUrl('data:image/jpeg;base64,' + artigos.fotoPublicacao )//+ artigos[].imagem)
+            setImageUrl('data:image/jpeg;base64,' + artigos[0].fotoPublicacao )//+ artigos[].imagem)
         }
       })    
       return(
@@ -65,16 +65,16 @@ function Detalhe(){
                                 <td> {artigo.codigo }</td>
                                 <td> {artigo.titulo }</td>
                                 <td> {artigo.descricao }</td>
-                                <td>{artigo.codigo? <img style={{ width: "95%", height: "85%", margin: "10px 5px" }} src={imageUrl} /> : null}</td>
-                            </tr>       
-                        ))}
+                            </tr>                                   
+                        ))}                        
                     </div>
                     
                     <div className="row">
                         <div className="col">
                         <div className="col">
                             <div className="informacoes" style={{height: '250px'}}>
-                                <h3>Imagem 1 </h3>
+                                <h3>Imagem 1 deve estar aqui </h3>
+                                <img style={{ width: "95%", height: "85%", margin: "10px 5px" }} src={imageUrl} />
                             </div>
                         </div>
                         </div>

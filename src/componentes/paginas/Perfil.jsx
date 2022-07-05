@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect} from 'react';
-import './estilos/Perfil.css'
+import '../estilos/Perfil.css'
 import { NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';

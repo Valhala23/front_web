@@ -1,8 +1,8 @@
 import React, { useState, useEffect} from 'react';
 import { useHistory } from "react-router-dom";
-import './estilos/EditarPerfil.css'
+import '../estilos/EditarPerfil.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import api from '../servicos/api'
+import api from '../../servicos/api'
 import Button from '@material-ui/core/Button';
 
 function Perfil(){ 

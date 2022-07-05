@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import './estilos/Detal.css';
+import '../estilos/Detal.css';
 import Button from '@material-ui/core/Button';
 
 function EditarDetalhe(){
