@@ -48,20 +48,26 @@ function EditarDetalhe(){
         }
         console.log("Imagem selecionada okei, tentando postar.. ")
         let formData = new FormData();
-        formData.append('detalheArtigo', id);
-        formData.append('image', selectedImage);
+        try {
+            formData.append('detalheArtigo', id);
+            formData.append('image', selectedImage);
+            // Requisicao para postar imagem
+            axios.post(baseUrlExterno, formData,
+                {          
+                    headers: {          
+                        Authorization: 'Bearer ' + localStorage.getItem('tokens').toString(),
+                        'Content-Type': 'multipart/form-data'            
+                    }
+                })
+                .then(res => {
+                        alert("Imagem salva com sucesso.")
+                })
+            
+        } catch (error) {
+            alert("Erro ao postar imagem: "+ error)
+        }
 
-        // Requisicao para postar imagem
-        axios.post(baseUrlExterno, formData,
-            {          
-                headers: {          
-                    Authorization: 'Bearer ' + localStorage.getItem('tokens').toString(),
-                    'Content-Type': 'multipart/form-data'            
-                }
-            })
-            .then(res => {
-                    alert("Imagem salva com sucesso.")
-            })
+
     };
     // fim postar foto
 
